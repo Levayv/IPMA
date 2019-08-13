@@ -27,13 +27,13 @@ class Button extends Component {
     }
 
     foo() {
-        fetch("http://localhost:8000/api/post/1")
+        fetch("http://localhost:8000/api/lesson/1")
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        items: result.items
+                        items: result.link
                     });
                 },
                 (error) => {
@@ -76,5 +76,34 @@ class Button extends Component {
         );
     }
 }
-
+class TableGroup extends Component{
+    render() {
+        return (
+            <div>
+                <table>
+                    <th>
+                        <td> a </td>
+                        <td> a </td>
+                        <td> a </td>
+                        
+                    </th>
+                    <tr>
+                        <td> a </td>
+                        <td> a </td>
+                        <td> a </td>
+                        
+                    </tr>
+                    <tr>
+                        <td> a </td>
+                        <td> a </td>
+                        <td> a </td>
+                        
+                    </tr>
+                </table>
+                
+            </div>
+        );
+    }
+    
+}
 export default App;
