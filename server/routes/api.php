@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['prefix' => 'post'], function() {
-    Route::get('/', 'PostController@index');
-    Route::get('{id}', 'PostController@show');
-    Route::post('/', 'PostController@store');
-    Route::put('{id}', 'PostController@update');
-    Route::delete('{id}', 'PostController@destroy');
+Route::group(['prefix' => 'article'], function() {
+    Route::get('/', 'ArticleController@index');
+    Route::get('{id}', 'ArticleController@show');
+    Route::post('/', 'ArticleController@store');
+    Route::put('{id}', 'ArticleController@update');
+    Route::delete('{id}', 'ArticleController@destroy');
+});
+
+Route::group(['prefix' => 'lesson'], function() {
+    Route::get('/', 'LessonController@readall');
+    Route::get('{id}', 'LessonController@read');
+    Route::post('/', 'LessonController@create');
+    Route::put('{id}', 'LessonController@update');
+    Route::delete('{id}', 'LessonController@delete');
 });
 
 

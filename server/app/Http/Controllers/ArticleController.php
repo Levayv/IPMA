@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Article;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
-class PostController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $models = Post::query()->get();
+        $models = Article::query()->get();
         return $models;
     }
 
@@ -39,7 +39,7 @@ class PostController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
-        $model = new Post();
+        $model = new Article();
         $model->title = $request->get('title');
         $model->description = $request->get('description');
         $model->save();
@@ -80,7 +80,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = Post::query()->find($id);
+        $model = Article::query()->find($id);
         if (!$model) {
             return response()->json([
                 'message' => 'Post does not exist',
@@ -105,7 +105,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $model = Post::query()->find($id);
+        $model = Article::query()->find($id);
         if (!$model) {
             return response()->json([
                 'message' => 'Post does not exist',
