@@ -27,7 +27,7 @@ class Button extends Component {
     }
 
     foo() {
-        fetch("http://localhost:8000/api/lesson/1")
+        fetch(" FILL IN THIS LINK IF NEEDED ")
             .then(res => res.json())
             .then(
                 (result) => {
