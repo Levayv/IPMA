@@ -37,7 +37,7 @@ class Button extends Component {
                     });
                 },
                 (error) => {
-                    console.log(error.toString());
+                    console.debug(error.toString());
                     
                     this.setState({
                         isLoaded: true,
@@ -53,9 +53,9 @@ class Button extends Component {
         if (this.state.isLoaded){
             element = "loaded";
             if (this.state.items === undefined){
-                console.log(this.state.error);
+                console.debug(this.state.error);
             }else {
-                console.log(this.state.items);
+                console.debug(this.state.items);
             }
         }else{
             element = "loading";

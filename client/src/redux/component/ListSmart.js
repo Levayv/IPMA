@@ -1,50 +1,67 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import uuidv1 from "uuid";
 import * as PropTypes from "prop-types";
 import DumbList from "../container/ListDumb"
 import Api from "../api/apiTemp"
-// import { addArticle } from "../actions/index";
+import {crud_read_all} from "../action/index";
+
 // todo add mapStatetoProps
 
 class ConnectedList extends Component {
     constructor(props) {
         super(props);
-        // console.log("creating object Number " + ConnectedList.count++);
-        this.api = new Api("http://localhost:8000/api/lesson/1");
-        this.doAfterFetch = this.doAfterFetch.bind(this); 
+        // console.debug("creating object Number " + ConnectedList.count++);
+        this.api = new Api(process.env.REACT_APP_BACKEND_IP_PORT);
+        this.job = this.job.bind(this);
     }
+
     static count = 0;
 
     componentDidMount() {
-        console.log("ConnectedList.componentDidMount()");
-        let x = this.api.doAfterFetch(this.doAfterFetch)
+        console.debug("ConnectedList.componentDidMount()");
+        console.debug("!");
+        console.debug(process.env.REACT_APP_BACKEND_IP_PORT);
+
+        let x = this.api.doAfterFetch(this.job)
     }
 
-    doAfterFetch(isSuccess) {
+    job(isSuccess) {
         if (isSuccess) {
-            console.log("HOORAY! ++ ");
+            console.debug("HOORAY! ++ ");
         } else {
-            console.log("HOORAY! -- ");
+            console.debug("HOORAY! -- ");
         }
-        
+        console.debug(crud_read_all);
+
+        this.props.crud_read_all(
+            {
+                something: "something_nice"
+            })
     }
 
     render() {
-        console.log("ConnectedList.render()");
+        console.debug("ConnectedList.render()");
         // let {lessons} = this.props;
-        let {lessons} = {lessons:["l1" , "l2"]};
+        let {lessons} = {lessons: ["l1", "l2"]};
         return (
             <DumbList/>
         );
     }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
-        // addArticle: article => dispatch(addArticle(article))
+        crud_read_all: something => dispatch(crud_read_all(something))
     };
 }
 
-ConnectedList.propTypes = {lessons: PropTypes.any};
-const List = connect(null, mapDispatchToProps)(ConnectedList);
+// function mapStateToProps(state) {
+//     return {lessons: state.lessons};
+// }
+const mapStateToProps = state => {
+    return {something: state.something};
+};
+ConnectedList.propTypes = {something: PropTypes.any};
+const List = connect(mapStateToProps, mapDispatchToProps)(ConnectedList);
 export default List;

@@ -26,26 +26,26 @@ class ApiTemp extends baseApi{
     showConnectionStatus(isConnectionSuccess){
         // only output to console yet 
         if (isConnectionSuccess){
-            console.log("Backend online");
+            console.debug("Backend online");
         }else{
-            console.log("Backend offline");
+            console.debug("Backend offline");
         }
     }
     foo(){
-        console.log("Api api test");
-        console.log(this.baseLink);
+        console.debug("Api api test");
+        console.debug(this.baseLink);
     }
     doAfterFetch(someFuntion){
         fetch("http://localhost:8000/api/lesson/1")
             .then(response => response.json())
             .then( 
                 (result) => {
-                    console.log("fetch promise fulfill");
+                    console.debug("fetch promise fulfill");
                     someFuntion(true);
                 },
                 (error) => {
-                    console.log("fetch promise rejected");
-                    // console.log(error.toString());
+                    console.debug("fetch promise rejected");
+                    // console.debug(error.toString());
                     someFuntion(false)
                 }
             )    
