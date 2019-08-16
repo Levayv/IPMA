@@ -2,12 +2,10 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import uuidv1 from "uuid";
 import * as PropTypes from "prop-types";
-import DumbList from "../container/ListDumb"
+import List_Table from "../container/List_Table"
 import API from "../api/API"
 import {crud_read_all} from "../action/index";
 import {crud_read} from "../action/index";
-
-// todo add mapStatetoProps
 
 class ConnectedList extends Component {
     constructor(props) {
@@ -22,6 +20,8 @@ class ConnectedList extends Component {
     componentDidMount() {
         console.debug("ConnectedList.componentDidMount()");
         API.doAfterGet("lesson" ,1, this.job1);
+        API.doAfterGet("lesson" ,2, this.job1);
+        API.doAfterGet("lesson" ,3, this.job1);
     }
     job1(isSuccess , data) {
         console.debug("ConnectedList.job()");
@@ -40,8 +40,6 @@ class ConnectedList extends Component {
         console.debug("ConnectedList.job()");
         if (isSuccess) {
             console.log("HOORAY! ++ ");
-            console.log(data);
-
             this.props.crud_read(
                 {
                     something: ["something_nice" , "something_nicer"],
@@ -54,10 +52,9 @@ class ConnectedList extends Component {
 
     render() {
         console.debug("ConnectedList.render()");
-        // let {lessons} = this.props;
-        let {lessons} = {lessons: ["l1", "l2"]};
+        let data = this.props.list;
         return (
-            <DumbList/>
+            <List_Table data={data}/>
         );
     }
 }
@@ -69,7 +66,10 @@ function mapDispatchToProps(dispatch) {
     };
 }
 const mapStateToProps = state => {
-    return {something: state.something};
+    return {
+        something: state.something , 
+        list: state.list
+    };
 };
 ConnectedList.propTypes = {something: PropTypes.any};
 const List = connect(mapStateToProps, mapDispatchToProps)(ConnectedList);

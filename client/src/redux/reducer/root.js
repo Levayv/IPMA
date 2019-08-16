@@ -1,6 +1,6 @@
 // todo import actions
 // todo define initialState and assign it as default value to root function
-
+// todo wrong action logicly read_all vs read
 import {CRUD_READ_ALL} from "../action-types";
 const initState = {
     something: "" ,

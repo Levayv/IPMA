@@ -2,6 +2,7 @@ import react from "react";
 import axios from 'axios';
 
 class API {
+    // todo ? still useless 
     static showConnectionStatus(isConnectionSuccess) {
         // only output to console yet 
         if (isConnectionSuccess) {

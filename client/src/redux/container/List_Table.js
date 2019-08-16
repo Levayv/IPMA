@@ -1,8 +1,9 @@
 import React from "react";
 import {Component} from "react";
 
-class DumpList extends Component{
+class List_Table extends Component{
     render() {
+        console.log(this.props.data);
         let lessons = [
             {
                 id:"1",
@@ -25,4 +26,4 @@ class DumpList extends Component{
     }
 }
 
-export default DumpList;
+export default List_Table;
