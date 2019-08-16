@@ -22,14 +22,11 @@ class ConnectedList extends Component {
     componentDidMount() {
         console.debug("ConnectedList.componentDidMount()");
         API.doAfterGet("lesson" ,1, this.job1);
-        API.doAfterGet("lesson" ,1, this.job1);
     }
     job1(isSuccess , data) {
         console.debug("ConnectedList.job()");
         if (isSuccess) {
             console.log("HOORAY! ++ ");
-            console.log(data);
-
             this.props.crud_read_all(
                 {
                     something: ["something_nice" , "something_nicer"],

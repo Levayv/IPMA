@@ -44,7 +44,7 @@ class API {
                 toDoAfterPromise(false, undefined)
             })
             .finally(() => {
-                    console.log("API (ReqID="+reqID+") completed");
+                    console.debug("API (ReqID="+reqID+") completed");
                 }
             )
     }

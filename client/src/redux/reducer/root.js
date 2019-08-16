@@ -4,29 +4,23 @@
 import {CRUD_READ_ALL} from "../action-types";
 const initState = {
     something: "" ,
-    list: ["asd"] ,
+    list: [] ,
     page: null
 };
 function root(state = initState, action){
-    console.debug("RootReducer: action type is " + action.type);
+    console.log("Reducer[Root]: Action type is " + action.type);
+    console.debug(" Reducer[Root]: Current state is ...");
+    console.debug(state);
+    console.debug(" Reducer[Root]: Action payload is ...");
+    console.debug(action.payload);
     
     if (action.type === CRUD_READ_ALL) {
-        let rv;
-        if (state.list.length === 0){
-            console.log("!!! list length = 0");
-            console.log(state.list);
-            rv = action.payload.data
-        }else {
-            console.log("!!! list length > 0");
-            console.log(state.list);
-            console.log(state.list.slice());
-            rv = action.payload.data
-        }
-        return Object.assign({}, state, {
-            // something: state.something.concat(action.payload)
-            something: action.payload.something,
-            list: rv
-        });
+        let newState = Object.assign({}, state);
+        newState.list.push(action.payload.data)
+        //todo refactor ?
+        console.debug(" Reducer[Root]: New state will be ...");
+        console.debug(newState);
+        return newState;
     }
     // switch (action.type) {
     //     case ADD_ARTICLE:
