@@ -26,9 +26,9 @@ class ApiTemp extends baseApi{
     showConnectionStatus(isConnectionSuccess){
         // only output to console yet 
         if (isConnectionSuccess){
-            console.debug("Backend online");
+            console.log("Backend online");
         }else{
-            console.debug("Backend offline");
+            console.log("Backend offline");
         }
     }
     foo(){
@@ -36,15 +36,16 @@ class ApiTemp extends baseApi{
         console.debug(this.baseLink);
     }
     doAfterFetch(someFuntion){
+        
         fetch("http://localhost:8000/api/lesson/1")
             .then(response => response.json())
             .then( 
                 (result) => {
-                    console.debug("fetch promise fulfill");
+                    console.debug("API.doAfterFetch() Promise fulfilled");
                     someFuntion(true);
                 },
                 (error) => {
-                    console.debug("fetch promise rejected");
+                    console.debug("API.doAfterFetch() Promise rejected");
                     // console.debug(error.toString());
                     someFuntion(false)
                 }

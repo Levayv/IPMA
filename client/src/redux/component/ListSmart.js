@@ -11,6 +11,7 @@ import {crud_read_all} from "../action/index";
 class ConnectedList extends Component {
     constructor(props) {
         super(props);
+        console.debug("ConnectedList.constructor()");
         // console.debug("creating object Number " + ConnectedList.count++);
         this.api = new Api(process.env.REACT_APP_BACKEND_IP_PORT);
         this.job = this.job.bind(this);
@@ -20,23 +21,21 @@ class ConnectedList extends Component {
 
     componentDidMount() {
         console.debug("ConnectedList.componentDidMount()");
-        console.debug("!");
-        console.debug(process.env.REACT_APP_BACKEND_IP_PORT);
-
         let x = this.api.doAfterFetch(this.job)
     }
 
     job(isSuccess) {
+        console.debug("ConnectedList.job()");
         if (isSuccess) {
-            console.debug("HOORAY! ++ ");
+            console.log("HOORAY! ++ ");
         } else {
-            console.debug("HOORAY! -- ");
+            console.log("HOORAY! -- ");
         }
         console.debug(crud_read_all);
 
         this.props.crud_read_all(
             {
-                something: "something_nice"
+                something: ["something_nice" , "something_nicer"]
             })
     }
 
