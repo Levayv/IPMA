@@ -26,12 +26,12 @@ class API {
     static _doAfterSomething(method, topic, id = "", toDoAfterPromise) {
         let reqID = ++API.lastReqID;
         console.debug("API " + method + " request ... (ReqID=" + reqID+")");
-        const ax = axios.create({
+        const axiosInstance = axios.create({
             baseURL: "http://"
                 + process.env.REACT_APP_BACKEND_IP_PORT
                 + "/api"
         });
-        ax[method](topic + "/" + id)
+        axiosInstance[method](topic + "/" + id)
             .then(response => {
                     console.debug("API._doAfterSomething() Promise fulfilled");
                     toDoAfterPromise(true, response.data);

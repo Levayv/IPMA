@@ -53,8 +53,11 @@ class ConnectedList extends Component {
     render() {
         console.debug("ConnectedList.render()");
         let data = this.props.list;
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!");
+        console.log(data);
+        
         return (
-            <List_Table data={data}/>
+            <List_Table dataList={data}/>
         );
     }
 }
