@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store/index";
 
 // import App from './App';
-import List from './redux/component/List-container';
+import List from './redux/container/LessonContainer';
 import './index.css';
 
 ReactDOM.render(

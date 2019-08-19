@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import uuidv1 from "uuid";
 import * as PropTypes from "prop-types";
-import List_Table from "../container/List_Table"
+import LessonTable from "../component/LessonTable"
 import API from "../api/API"
 import {crud_read_all} from "../action/index";
 import {crud_read} from "../action/index";
@@ -10,7 +10,7 @@ import {crud_read} from "../action/index";
 class ConnectedList extends Component {
     constructor(props) {
         super(props);
-        console.debug("ConnectedList.constructor()");
+        console.debug("List-container.constructor()");
         // console.debug("creating object Number " + ConnectedList.count++);
         // this.api = new Api(process.env.REACT_APP_BACKEND_IP_PORT);
         this.job1 = this.job1.bind(this);
@@ -18,13 +18,13 @@ class ConnectedList extends Component {
         // this.job = this.job.bind(this);
     }
     componentDidMount() {
-        console.debug("ConnectedList.componentDidMount()");
+        console.debug("List-container.componentDidMount()");
         API.doAfterGet("lesson" ,1, this.job1);
         API.doAfterGet("lesson" ,2, this.job1);
         API.doAfterGet("lesson" ,3, this.job1);
     }
     job1(isSuccess , data) {
-        console.debug("ConnectedList.job()");
+        console.debug("List-container.job()");
         if (isSuccess) {
             console.log("HOORAY! ++ ");
             this.props.crud_read_all(
@@ -37,7 +37,7 @@ class ConnectedList extends Component {
         }
     }
     job2(isSuccess , data) {
-        console.debug("ConnectedList.job()");
+        console.debug("List-container.job()");
         if (isSuccess) {
             console.log("HOORAY! ++ ");
             this.props.crud_read(
@@ -51,13 +51,13 @@ class ConnectedList extends Component {
     }
 
     render() {
-        console.debug("ConnectedList.render()");
+        console.debug("List-container.render()");
         let data = this.props.list;
         console.log("!!!!!!!!!!!!!!!!!!!!!!!!");
         console.log(data);
         
         return (
-            <List_Table dataList={data}/>
+            <LessonTable dataList={data}/>
         );
     }
 }
