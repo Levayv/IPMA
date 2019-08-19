@@ -2,11 +2,14 @@ import React from "react";
 
 class LessonItem extends React.Component {
     render() {
-        console.log("LessonItem.render()");
+        console.debug("LessonItem.render()");
         const datum = this.props.datum;
-        console.log(datum);
+        console.debug("Datum ...");
+        console.debug(datum.id);
+        console.debug(datum.name);
+        console.debug(datum.link);
         return (
-            <tr key={datum.id}>
+            <tr>
                 <td className="class1" >
                     {this.props.index}
                 </td>

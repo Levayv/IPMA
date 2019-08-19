@@ -7,6 +7,9 @@ import API from "../api/API"
 import {crud_read_all} from "../action/index";
 import {crud_read} from "../action/index";
 
+//todo temp solution
+import LessonCreate from "./LessonCreate"
+
 class ConnectedList extends Component {
     constructor(props) {
         super(props);
@@ -26,15 +29,20 @@ class ConnectedList extends Component {
     }
     job1(isSuccess , data) {
         console.debug("List-container.job()");
-        if (isSuccess) {
-            console.log("HOORAY! ++ ");
-            this.props.crud_read(
-                {
-                    something: ["something_nice" , "something_nicer"],
-                    data: data
-                })
-        } else {
-            console.log("HOORAY! -- ");
+        try{
+            if (isSuccess) {
+                console.log("HOORAY! ++ ");
+                this.props.crud_read(
+                    {
+                        something: ["something_nice" , "something_nicer"],
+                        data: data
+                    })
+            } else {
+                console.log("HOORAY! -- ");
+            }    
+        }catch (e) {
+            debugger
+            console.log(e);
         }
     }
     job2forAll(isSuccess , data) {
@@ -58,10 +66,12 @@ class ConnectedList extends Component {
     render() {
         console.debug("List-container.render()");
         let data = this.props.bulkList;
-        console.log(data);
+        console.debug(data);
         
-        return (
-            <LessonTable dataList={data}/>
+        return (<div>
+                <LessonTable dataList={data}/>
+                <LessonCreate/>
+            </div>
         );
     }
 }

@@ -4,7 +4,7 @@ import axios from 'axios';
 class API_core {
     static lastReqID=0;
     static _doAfterSomething(method, topic, id = "", toDoAfterPromise) {
-        let reqID = ++API.lastReqID;
+        let reqID = ++API_core.lastReqID;
         console.debug("API " + method + " request ... (ReqID=" + reqID+")");
         const axiosInstance = axios.create({
             baseURL: "http://"
@@ -42,14 +42,14 @@ class API {
         }
     }
     
-    static doAfterGetAll(topic, toDoAfterPromise) {
-        API_core._doAfterSomething("get", topic, undefined, toDoAfterPromise);
+    static doAfterGetAll(topic, toDoAfterPromise11) {
+        API_core._doAfterSomething("get", topic, undefined, toDoAfterPromise11);
     }
-    static doAfterGet(topic, id, toDoAfterPromise) {
-        API_core._doAfterSomething("get", topic, id, toDoAfterPromise);
+    static doAfterGet(topic, id, toDoAfterPromise22) {
+        API_core._doAfterSomething("get", topic, id, toDoAfterPromise22);
     }
-    static doAfterPost(topic, id, toDoAfterPromise) {
-        API_core._doAfterSomething("post", topic, id, toDoAfterPromise);
+    static doAfterPost(topic, id, toDoAfterPromise33) {
+        API_core._doAfterSomething("post", topic, id, toDoAfterPromise33);
     }
 }
 

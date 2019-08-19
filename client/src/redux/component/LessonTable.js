@@ -6,7 +6,6 @@ import './LessonTable.css'
 class LessonTable extends Component {
     constructor(props) {
         super(props);
-        this.dataList = Array.from(this.props.dataList);
         this.col = {
             id: " ",
             name: "Name",
@@ -15,9 +14,9 @@ class LessonTable extends Component {
     }
 
     render() {
-        console.log("!!! LessonTable.render()");
-        console.log("! len = " + this.props.dataList.length);
-        console.log(this.props.dataList);
+        console.debug("!!! LessonTable.render()");
+        console.debug("! len = " + this.props.dataList.length);
+        console.debug(this.props.dataList);
         // let data1 = Array.from(this.props.data);
         // console.log(this.props.data);
         // console.log("len="+this.props.data);
