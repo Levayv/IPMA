@@ -1,7 +1,6 @@
 import React from "react";
 
 class LessonItem extends React.Component {
-    static lastUsedRowNumber = 0;
     render() {
         console.log("LessonItem.render()");
         const datum = this.props.datum;
@@ -9,7 +8,7 @@ class LessonItem extends React.Component {
         return (
             <tr key={datum.id}>
                 <td className="class1" >
-                    {++LessonItem.lastUsedRowNumber}
+                    {this.props.index}
                 </td>
                 <td className="class1" >
                     {datum.name}

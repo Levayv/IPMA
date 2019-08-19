@@ -37,11 +37,10 @@ class LessonTable extends Component {
         ];
 
         const tableBody = this.props.dataList.map(
-            (element) => {
+            (element, index) => {
                 // console.log("!!! element test");
                 // console.log(element);
-                LessonItem.lastUsedRowNumber = 0;
-                return (<LessonItem datum={element}/>);
+                return (<LessonItem datum={element} index={index+1}/>);
             }
         );
         return (

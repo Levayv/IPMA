@@ -1,27 +1,7 @@
 import react from "react";
 import axios from 'axios';
 
-class API {
-    // todo ? still useless 
-    static showConnectionStatus(isConnectionSuccess) {
-        // only output to console yet 
-        if (isConnectionSuccess) {
-            console.log("Backend online");
-        } else {
-            console.log("Backend offline");
-        }
-    }
-    static doAfterGetAll(topic, toDoAfterPromise) {
-        API._doAfterSomething("get", topic, undefined, toDoAfterPromise);
-    }
-    static doAfterGet(topic, id, toDoAfterPromise) {
-        API._doAfterSomething("get", topic, id, toDoAfterPromise);
-    }
-
-    static doAfterPost(topic, id, toDoAfterPromise) {
-        API._doAfterSomething("post", topic, id, toDoAfterPromise);
-    }
-
+class API_core {
     static lastReqID=0;
     static _doAfterSomething(method, topic, id = "", toDoAfterPromise) {
         let reqID = ++API.lastReqID;
@@ -48,6 +28,28 @@ class API {
                     console.debug("API (ReqID="+reqID+") completed");
                 }
             )
+    }
+}
+
+class API {
+    // todo ? still useless 
+    static showConnectionStatus(isConnectionSuccess) {
+        // only output to console yet 
+        if (isConnectionSuccess) {
+            console.log("Backend online");
+        } else {
+            console.log("Backend offline");
+        }
+    }
+    
+    static doAfterGetAll(topic, toDoAfterPromise) {
+        API_core._doAfterSomething("get", topic, undefined, toDoAfterPromise);
+    }
+    static doAfterGet(topic, id, toDoAfterPromise) {
+        API_core._doAfterSomething("get", topic, id, toDoAfterPromise);
+    }
+    static doAfterPost(topic, id, toDoAfterPromise) {
+        API_core._doAfterSomething("post", topic, id, toDoAfterPromise);
     }
 }
 

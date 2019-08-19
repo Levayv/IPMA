@@ -14,29 +14,17 @@ class ConnectedList extends Component {
         // console.debug("creating object Number " + ConnectedList.count++);
         // this.api = new Api(process.env.REACT_APP_BACKEND_IP_PORT);
         this.job1 = this.job1.bind(this);
-        this.job2 = this.job2.bind(this);
+        this.job2forAll = this.job2forAll.bind(this);
         // this.job = this.job.bind(this);
     }
     componentDidMount() {
         console.debug("List-container.componentDidMount()");
-        API.doAfterGet("lesson" ,1, this.job1);
-        API.doAfterGet("lesson" ,2, this.job1);
-        API.doAfterGet("lesson" ,3, this.job1);
+        // API.doAfterGet("lesson" ,1, this.job1);
+        // API.doAfterGet("lesson" ,2, this.job1);
+        // API.doAfterGet("lesson" ,3, this.job1);
+        API.doAfterGetAll("lesson" , this.job2forAll)
     }
     job1(isSuccess , data) {
-        console.debug("List-container.job()");
-        if (isSuccess) {
-            console.log("HOORAY! ++ ");
-            this.props.crud_read_all(
-                {
-                    something: ["something_nice" , "something_nicer"],
-                    data: data
-                })
-        } else {
-            console.log("HOORAY! -- ");
-        }
-    }
-    job2(isSuccess , data) {
         console.debug("List-container.job()");
         if (isSuccess) {
             console.log("HOORAY! ++ ");
@@ -49,11 +37,27 @@ class ConnectedList extends Component {
             console.log("HOORAY! -- ");
         }
     }
+    job2forAll(isSuccess , data) {
+        try{
+            console.debug("List-container.job()");
+            if (isSuccess) {
+                console.log("HOORAY! ++ ");
+                this.props.crud_read_all(
+                    {
+                        something: ["something_nice" , "something_nicer"],
+                        bulkData: data
+                    })
+            } else {
+                console.log("HOORAY! -- ");
+            }    
+        }catch (e) {
+            console.log(e);
+        }
+    }
 
     render() {
         console.debug("List-container.render()");
-        let data = this.props.list;
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!");
+        let data = this.props.bulkList;
         console.log(data);
         
         return (
@@ -64,14 +68,15 @@ class ConnectedList extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        crud_read_all: something => dispatch(crud_read_all(something)),
-        crud_read: something => dispatch(crud_read(something))
+        crud_read_all: all_lessons => dispatch(crud_read_all(all_lessons)),
+        crud_read: single_lesson => dispatch(crud_read(single_lesson))
     };
 }
 const mapStateToProps = state => {
     return {
-        something: state.something , 
-        list: state.list
+        something: state.something ,
+        list: state.list,
+        bulkList: state.bulkList
     };
 };
 ConnectedList.propTypes = {something: PropTypes.any};
