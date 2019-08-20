@@ -1,14 +1,18 @@
 // todo import actions
 // todo define initialState and assign it as default value to root function
 // todo wrong action logicly read_all vs read
-import {CRUD_READ_ALL} from "../action-types";
+import {CRUD_READ_ALL, FORM_UPDATE_DATA} from "../action-types";
 import {CRUD_READ} from "../action-types";
 
 const initState = {
     something: "",
     list: [],
     bulkList: [],
-    formData: [],
+    formData: {
+        temp: "temppp",
+        name: "",
+        link: "",
+    },
     page: null
 };
 
@@ -29,6 +33,16 @@ function root(state = initState, action) {
         let data = action.payload.data;
         return Object.assign({}, state, {
                 list: state.list.concat(action.payload.data)
+            }
+        )
+    }
+
+    if (action.type === FORM_UPDATE_DATA) {
+        let data = action.payload.data;
+        return Object.assign({}, state, {
+                formData:{
+                    temp: state.formData.temp.concat(action.payload.string)
+                } 
             }
         )
     }

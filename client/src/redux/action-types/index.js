@@ -5,3 +5,5 @@ export const CRUD_CREATE = "CRUD_CREATE";
 export const CRUD_UPDATE = "CRUD_UPDATE";
 export const CRUD_DELETE = "CRUD_DELETE";
 
+export const FORM_UPDATE_DATA = "FORM_UPDATE_DATA";
+

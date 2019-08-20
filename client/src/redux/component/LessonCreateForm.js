@@ -1,7 +1,7 @@
 import React from "react";
 import {Component} from "react";
 import LabeledInput from "./LabeledInput";
-
+import FormSubmitButton from "./FormSubmitButton" 
 class LessonCreateForm extends Component {
     constructor(props) {
         super(props);
@@ -39,8 +39,11 @@ class LessonCreateForm extends Component {
                         <button
                             onClick={this.props.parentHandleSubmit}
                         >
-                            Submit
+                            Submit - react state 
                         </button>
+                        <FormSubmitButton
+                            text={"Submit - redux state"} 
+                        />
                     </fieldset>
                 </form>
             </div>
