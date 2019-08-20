@@ -2,13 +2,16 @@ import React from 'react';
 
 class LabeledInput extends React.Component {
     render() {
+        console.log(this.props.label + " = " + this.props.value);
+        
         return (
             <label> {this.props.label}:
                 <input
-                    // name={"asd"}
+                    value={this.props.value}
+                    onChange={this.props.updateState}
+
                     // type="text"
                     // checked={"this.state.isGoing"}
-                    // onChange={"this.handleInputChange"}
                 />
                 <br/>
             </label>

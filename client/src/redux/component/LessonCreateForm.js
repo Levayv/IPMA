@@ -10,31 +10,36 @@ class LessonCreateForm extends Component {
             name: "Name",
             link: "Link / URL",
         };
+        this.state = {
+            name: "",
+            link: "",
+        };
+        this.updateName = (event) => {
+            this.setState({name:event.target.value})
+        };
+        this.updateLink = (event) => {
+            this.setState({link:event.target.value})
+        };
     }
-    tempFunc(event){
-        event.preventDefault();
-        console.log("LessonCreateForm.tempFunc");
-        
-    }
+
     render() {
         return (<div>
                 <form>
                     <fieldset>
-                        <LabeledInput label={"labbul"}/>
-                        <LabeledInput label={"bubull"}/>
-                        {/*<label>*/}
-                        {/*    Number of guests:*/}
-                        {/*    <input*/}
-                        {/*        // name="numberOfGuests"*/}
-                        {/*        // type="number"*/}
-                        {/*        // value={"this.state.numberOfGuests"}*/}
-                        {/*        // onChange={"this.handleInputChange"}*/}
-                        {/*    />*/}
-                        {/*</label>*/}
-                        <button 
+                        <LabeledInput
+                            label={"lessonName"}
+                            value={this.state.name}
+                            updateState={this.updateName}
+                        />
+                        <LabeledInput
+                            label={"lessonLink"}
+                            value={this.state.link}
+                            updateState={this.updateLink}
+                        />
+                        <button
                             onClick={this.props.parentHandleSubmit}
                         >
-                            Submit 
+                            Submit
                         </button>
                     </fieldset>
                 </form>
@@ -42,4 +47,5 @@ class LessonCreateForm extends Component {
         )
     }
 }
+
 export default LessonCreateForm;
