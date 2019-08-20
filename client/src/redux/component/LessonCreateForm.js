@@ -27,20 +27,22 @@ class LessonCreateForm extends Component {
                 <form>
                     <fieldset>
                         <LabeledInput
-                            label={"lessonName"}
-                            value={this.state.name}
-                            updateState={this.updateName}
+                            labelName={"name"}
+                            displayName={"Lesson's Name"}
+                            // value={this.state.name}
+                            // updateState={this.updateName}
                         />
                         <LabeledInput
-                            label={"lessonLink"}
-                            value={this.state.link}
-                            updateState={this.updateLink}
+                            labelName={"link"}
+                            displayName={"Lesson's Link"}
+                            // value={this.state.link}
+                            // updateState={this.updateLink}
                         />
-                        <button
-                            onClick={this.props.parentHandleSubmit}
-                        >
-                            Submit - react state 
-                        </button>
+                        {/*<button*/}
+                        {/*    onClick={this.props.parentHandleSubmit}*/}
+                        {/*>*/}
+                        {/*    Submit - react state */}
+                        {/*</button>*/}
                         <FormSubmitButton
                             text={"Submit - redux state"} 
                         />

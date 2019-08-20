@@ -51,7 +51,7 @@ class ConnectedLessonCreate extends Component {
         let formData = new FormData();
         formData.append('name' , "Lesson64 lies");
         formData.append('link' , "some random character sequence");
-        API.doAfterPost("lesson",undefined, formData, this.job1)
+        // API.doAfterPost("lesson",undefined, formData, this.job1)
     }
     render() {
         console.debug("LessonCreate.render()");

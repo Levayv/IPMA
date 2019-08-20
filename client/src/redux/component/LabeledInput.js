@@ -6,20 +6,25 @@ class ConnectedLabeledInput extends React.Component {
     constructor(props) {
         super(props);
         this.updateData = (event) => {
-            console.log("LabeledInput.updateData()");
-            console.log(event.target.value);
+            console.debug("LabeledInput.updateData()");
+            console.debug("Input field name = " + this.props.labelName);
+            console.debug("Input field value = " + event.target.value);
             this.props.form_data_update({
-                string: event.target.value,
+                [this.props.labelName]: event.target.value,
             })    
         }
     }
 
     render() {
-        console.debug("LabeledInput.render() " + this.props.label + " = " + this.props.value);
+        console.debug("LabeledInput.render()");
+        // console.log(this.props.formData.name);
+        // console.log(this.props.formData.link);
+        const tempValue = this.props.formData[this.props.labelName];
+        const realValue = (tempValue)?(tempValue):"";
         return (
-            <label> {this.props.formData.temp}:
+            <label> {this.props.displayName}:
                 <input
-                    value={this.props.formData.temp}
+                    value={realValue}
                     onChange={this.updateData}
                     // onChange={this.props.updateState}
 

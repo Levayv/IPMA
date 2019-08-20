@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from "react-redux"
-import {form_data_update} from "../action/index"
 import API from "../api/API";
 class ConnectedFormSubmitButton extends React.Component {
     constructor(props) {
@@ -10,38 +9,24 @@ class ConnectedFormSubmitButton extends React.Component {
             console.log(event.target.value);
         };
         this.handleSubmit = (event) =>{
-            console.log("FormSubmitButton.handleSubmit()");
-            console.log(event.target.value);
+            console.debug("FormSubmitButton.handleSubmit()");
             event.preventDefault();
-            // let payload = {
-            //     name : "Lesson55 ",
-            //     link : "another diabolical string",
-            // };
-            let formData = new FormData();
-            
-            
-            // todo ASAP !!!!
-            formData.append('name' , this.props.formData.temp);
-            formData.append('name' , this.props.formData.temp) ;
+            let formData;
+            formData = new FormData();
+            formData.append('name' , this.props.formData.name);
+            formData.append('link' , this.props.formData.link) ;
 
-            console.log("!!!");
-            console.log("formData is ...");
-            console.log(formData.get("name"));
-            console.log(formData.get("link"));
-                        
-            formData.append('name' , "Lesson 555");
-            formData.append('link' , "another string");
-            console.log(formData.get("name"));
-            console.log(formData.get("link"));
+            console.debug("FormData's name = " + formData.get("name"));
+            console.debug("FormData's link = " + formData.get("link"));
             API.doAfterPost("lesson",undefined, formData, this.job)
         };
         this.job = (isSuccess, data) => {
             console.debug("FormSubmitButton.job()");
             try{
                 if (isSuccess) {
-                    console.log("HOORAY! ++ ");
+                    console.log("Reqest & Response Success");
                 } else {
-                    console.log("HOORAY! -- ");
+                    console.log("Reqest & Response Failed");
                 }
             }catch (e) {
             debugger
@@ -51,7 +36,7 @@ class ConnectedFormSubmitButton extends React.Component {
     }
 
     render() {
-        console.debug("LabeledInput.render() " + this.props.label + " = " + this.props.value);
+        console.debug("FormSubmitButton.render() " + this.props.label + " = " + this.props.value);
         return (
             <button
                 onClick={this.handleSubmit}>
@@ -66,11 +51,6 @@ const mapStateToProps = state => {
         formData: state.formData,
     };
 };
-function mapDispatchToProps(dispatch) {
-    return {
-        form_data_update: data => dispatch(form_data_update(data)),
-    };
-}
-const FormSubmitButton = connect(mapStateToProps, mapDispatchToProps)
+const FormSubmitButton = connect(mapStateToProps, null)
 (ConnectedFormSubmitButton);
 export default FormSubmitButton;

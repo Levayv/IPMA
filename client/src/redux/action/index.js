@@ -19,7 +19,15 @@ export function crud_update(payload) {
 export function crud_delete(payload) {
     return {type: CRUD_DELETE, payload}
 }
-import {FORM_UPDATE_DATA} from "../action-types/index"
+import {FORM_DATA_UPDATE} from "../action-types/index"
 export function form_data_update(payload) {
-    return {type: FORM_UPDATE_DATA, payload}
+    return {type: FORM_DATA_UPDATE, payload}
+}
+import {FORM_DATA_UPDATE_NAME} from "../action-types/index"
+export function form_data_update_name(payload) {
+    return {type: FORM_DATA_UPDATE_NAME, payload}
+}
+import {FORM_DATA_UPDATE_LINK} from "../action-types/index"
+export function form_data_update_link(payload) {
+    return {type: FORM_DATA_UPDATE_LINK, payload}
 }

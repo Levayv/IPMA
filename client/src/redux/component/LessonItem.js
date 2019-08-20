@@ -4,7 +4,7 @@ class LessonItem extends React.Component {
     render() {
         console.debug("LessonItem.render()");
         const datum = this.props.datum;
-        console.debug("Datum ...");
+        console.debug("Datum ... ... ... ... ...");
         console.debug(datum.id);
         console.debug(datum.name);
         console.debug(datum.link);

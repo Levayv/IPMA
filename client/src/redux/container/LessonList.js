@@ -16,9 +16,42 @@ class ConnectedList extends Component {
         console.debug("List-container.constructor()");
         // console.debug("creating object Number " + ConnectedList.count++);
         // this.api = new Api(process.env.REACT_APP_BACKEND_IP_PORT);
-        this.job1 = this.job1.bind(this);
-        this.job2forAll = this.job2forAll.bind(this);
-        // this.job = this.job.bind(this);
+        this.job1forGet = (isSuccess , data) =>{
+            console.debug("List-container.job()");
+            try{
+                if (isSuccess) {
+                    console.log("HOORAY! ++ ");
+                    this.props.crud_read(
+                        {
+                            something: ["something_nice" , "something_nicer"],
+                            data: data
+                        })
+                } else {
+                    console.log("HOORAY! -- ");
+                }
+            }catch (e) {
+            debugger
+                console.log(e);
+            }
+        };
+        this.job2forAll = (isSuccess , data) => {
+            try{
+                console.debug("List-container.job()");
+                if (isSuccess) {
+                    console.log("HOORAY! ++ ");
+                    this.props.crud_read_all(
+                        {
+                            something: ["something_nice" , "something_nicer"],
+                            bulkData: data
+                        })
+                } else {
+                    console.log("HOORAY! -- ");
+                }
+            }catch (e) {
+                console.log(e);
+            }
+        };
+        
     }
     componentDidMount() {
         console.debug("List-container.componentDidMount()");
@@ -27,41 +60,7 @@ class ConnectedList extends Component {
         // API.doAfterGet("lesson" ,3, this.job1);
         API.doAfterGetAll("lesson" , this.job2forAll)
     }
-    job1(isSuccess , data) {
-        console.debug("List-container.job()");
-        try{
-            if (isSuccess) {
-                console.log("HOORAY! ++ ");
-                this.props.crud_read(
-                    {
-                        something: ["something_nice" , "something_nicer"],
-                        data: data
-                    })
-            } else {
-                console.log("HOORAY! -- ");
-            }    
-        }catch (e) {
-            debugger
-            console.log(e);
-        }
-    }
-    job2forAll(isSuccess , data) {
-        try{
-            console.debug("List-container.job()");
-            if (isSuccess) {
-                console.log("HOORAY! ++ ");
-                this.props.crud_read_all(
-                    {
-                        something: ["something_nice" , "something_nicer"],
-                        bulkData: data
-                    })
-            } else {
-                console.log("HOORAY! -- ");
-            }    
-        }catch (e) {
-            console.log(e);
-        }
-    }
+    
 
     render() {
         console.debug("List-container.render()");
