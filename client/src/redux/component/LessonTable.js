@@ -39,7 +39,10 @@ class LessonTable extends Component {
             (element, index) => {
                 // console.log("!!! element test");
                 // console.log(element);
-                return (<LessonItem datum={element} index={index+1}/>);
+                return (<LessonItem 
+                    key={element.id} 
+                    datum={element} 
+                    index={index+1}/>);
             }
         );
         return (

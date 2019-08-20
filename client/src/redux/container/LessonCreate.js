@@ -75,7 +75,8 @@ const mapStateToProps = state => {
     return {
         something: state.something,
         list: state.list,
-        bulkList: state.bulkList
+        bulkList: state.bulkList,
+        formData: state.formData,
     };
 };
 ConnectedLessonCreate.propTypes = {something: PropTypes.any};

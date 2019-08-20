@@ -2,8 +2,7 @@ import React from 'react';
 
 class LabeledInput extends React.Component {
     render() {
-        console.log(this.props.label + " = " + this.props.value);
-        
+        console.debug("LabeledInput.render() " + this.props.label + " = " + this.props.value);
         return (
             <label> {this.props.label}:
                 <input

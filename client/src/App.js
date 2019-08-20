@@ -76,34 +76,34 @@ class Button extends Component {
         );
     }
 }
-class TableGroup extends Component{
-    render() {
-        return (
-            <div>
-                <table>
-                    <th>
-                        <td> a </td>
-                        <td> a </td>
-                        <td> a </td>
-                        
-                    </th>
-                    <tr>
-                        <td> a </td>
-                        <td> a </td>
-                        <td> a </td>
-                        
-                    </tr>
-                    <tr>
-                        <td> a </td>
-                        <td> a </td>
-                        <td> a </td>
-                        
-                    </tr>
-                </table>
-                
-            </div>
-        );
-    }
-    
-}
+// class Tableroup extends Component{
+//     render() {
+//         return (
+//             <div>
+//                 <table>
+//                     <th>
+//                         <td> a </td>
+//                         <td> a </td>
+//                         <td> a </td>
+//                        
+//                     </th>
+//                     <tr>
+//                         <td> a </td>
+//                         <td> a </td>
+//                         <td> a </td>
+//                        
+//                     </tr>
+//                     <tr>
+//                         <td> a </td>
+//                         <td> a </td>
+//                         <td> a </td>
+//                        
+//                     </tr>
+//                 </table>
+//                
+//             </div>
+//         );
+//     }
+//    
+// }
 export default App;

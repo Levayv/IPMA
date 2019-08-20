@@ -8,6 +8,7 @@ const initState = {
     something: "",
     list: [],
     bulkList: [],
+    formData: [],
     page: null
 };
 

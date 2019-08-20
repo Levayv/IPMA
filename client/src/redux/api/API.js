@@ -4,13 +4,13 @@ import axios from 'axios';
 class API_core {
     static lastReqID=0;
     static _doAfterSomething(method, topic, id = "", payload ,toDoAfterPromise) {
-        console.log("!!! indise API CORE");
-        console.log("method is " + method);
-        console.log("topic is " + topic);
-        console.log("id is " + id);
-        console.log("api link is " + (topic + "/" + id));
-        console.log("payload is ...");
-        console.log(payload);
+        console.debug("!!! indise API CORE");
+        console.debug("method is " + method);
+        console.debug("topic is " + topic);
+        console.debug("id is " + id);
+        console.debug("api link is " + (topic + "/" + id));
+        console.debug("payload is ...");
+        console.debug(payload);
         
         let reqID = ++API_core.lastReqID;
         console.debug("API " + method + " request ... (ReqID=" + reqID+")");
