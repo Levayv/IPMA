@@ -1,0 +1,23 @@
+button {
+    box-sizing: content-box;
+    padding: 0 8px;
+    margin: 0;
+    /*height: 8px;*/
+    font-size: 0.8em;
+    border-radius: 25px;
+    /*background-image: linear-gradient(red, yellow);;*/
+}
+
+.button-edit {
+    /*background-color: orange;*/
+    background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%)
+}
+.button-delete {
+    /*background-color: red;*/
+    background-image: linear-gradient(to right, #EB3349 0%, #F45C43 51%, #EB3349 100%)
+}
+
+.button-edit:hover, .button-delete:hover {
+    /*background-color: orange;*/
+    background-position: right center;
+}

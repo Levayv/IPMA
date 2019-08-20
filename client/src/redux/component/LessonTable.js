@@ -10,6 +10,7 @@ class LessonTable extends Component {
             id: " ",
             name: "Name",
             link: "Link / URL",
+            controlls: "Edit / Delete",
         };
     }
 
@@ -42,7 +43,10 @@ class LessonTable extends Component {
                 return (<LessonItem 
                     key={element.id} 
                     datum={element} 
-                    index={index+1}/>);
+                    index={index+1}
+                    editRecord={"EDIT"}
+                    deleteRecord={"EDIT"}
+                />);
             }
         );
         return (
@@ -52,6 +56,7 @@ class LessonTable extends Component {
                     <th>{this.col.id}</th>
                     <th>{this.col.name}</th>
                     <th>{this.col.link}</th>
+                    <th>{this.col.controlls}</th>
                 </tr>
                 </thead>
                 <tbody>

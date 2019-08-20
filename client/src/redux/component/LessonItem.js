@@ -1,23 +1,65 @@
 import React from "react";
+import Button from "./Button"
 
 class LessonItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleEdit = (event) =>{
+            console.log("EVENT !!! EDIT this record");
+            const recordID = this.extractRecordID(
+                event.target.id ,
+                event.target.className
+            );
+            console.log("recordID = "+ recordID);
+        };
+        this.handleDelete = (event) =>{
+            console.log("EVENT !!! DELETE this record");
+            const recordID = this.extractRecordID(
+                event.target.id ,
+                event.target.className
+            );
+            console.log("recordID = "+ recordID);
+        };
+        this.extractRecordID = (id , classname) => {
+            return id.substr(
+                classname.length + 16
+            )
+        }
+    }
+
     render() {
         console.debug("LessonItem.render()");
-        const datum = this.props.datum;
-        console.debug("Datum ... ... ... ... ...");
-        console.debug(datum.id);
-        console.debug(datum.name);
-        console.debug(datum.link);
+        const lesson = this.props.datum;
+        console.debug("Single Lesson  ... ... ... ... ...");
+        console.debug(lesson.id);
+        console.debug(lesson.name);
+        console.debug(lesson.link);
         return (
             <tr>
                 <td className="class1" >
                     {this.props.index}
                 </td>
                 <td className="class1" >
-                    {datum.name}
+                    {lesson.name}
                 </td>
                 <td className="class1" >
-                    {datum.link}
+                    {lesson.link}
+                </td>
+                <td>
+                    <Button
+                        action={"edit"}
+                        recordID={lesson.id} 
+                        handleClick={this.handleEdit}
+                    >
+                        EDIT
+                    </Button>
+                    <Button
+                        action={"delete"}
+                        recordID={lesson.id}
+                        handleClick={this.handleDelete}
+                    >
+                        DELETE
+                    </Button>
                 </td>
             </tr>
         )
