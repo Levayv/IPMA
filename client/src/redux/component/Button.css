@@ -16,8 +16,11 @@ button {
     /*background-color: red;*/
     background-image: linear-gradient(to right, #EB3349 0%, #F45C43 51%, #EB3349 100%)
 }
-
-.button-edit:hover, .button-delete:hover {
+.button-details {
+    /*background-color: red;*/
+    background-image: linear-gradient(to right, #2984eb 0%, #5995f4 51%, #2984eb 100%)
+}
+.button-edit:hover, .button-delete:hover , .button-details:hover{
     /*background-color: orange;*/
-    background-position: right center;
+    background-image: linear-gradient(to right, #25eb27 0%, #d2f455 51%, #74eb20 100%)
 }

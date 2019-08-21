@@ -1,4 +1,12 @@
-table , th , td{
+table , td{
+    border: 1px solid darkcyan;
+    background-color: lightcyan;
+}
+th {
     border: 1px solid darkcyan;
     background-color: cyan;
+}
+table{
+    width: 90%;
+    margin: auto;
 }

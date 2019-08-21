@@ -69,7 +69,6 @@ class ConnectedList extends Component {
         
         return (<div>
                 <LessonTable dataList={data}/>
-                <LessonCreate/>
             </div>
         );
     }
@@ -89,5 +88,5 @@ const mapStateToProps = state => {
     };
 };
 ConnectedList.propTypes = {something: PropTypes.any};
-const List = connect(mapStateToProps, mapDispatchToProps)(ConnectedList);
-export default List;
+const LessonList = connect(mapStateToProps, mapDispatchToProps)(ConnectedList);
+export default LessonList;

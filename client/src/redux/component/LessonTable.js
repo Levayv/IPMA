@@ -10,7 +10,7 @@ class LessonTable extends Component {
             id: " ",
             name: "Name",
             link: "Link / URL",
-            controlls: "Edit / Delete",
+            controlls: " Controlls",
         };
     }
 

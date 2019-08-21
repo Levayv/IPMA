@@ -3,3 +3,41 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.router-nav-main {
+  margin: 25px
+}
+
+.router-nav-main ul { /* flex-container */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /*justify-content: center;*/
+  justify-content: space-around;
+  /*align-items: stretch;*/
+  /*align-content: stretch;*/
+  
+  margin: 0;
+  padding: 0;
+  
+  background-color: lightgreen;
+  border: 1px solid darkgreen;
+}
+.router-nav-main ul li{ /* flex-item */
+  box-sizing: border-box;
+  margin: 0;
+  /*padding-top: 10px;*/
+  /*padding-bottom: 10px;*/
+  /*padding-left: 10px;*/
+  /*padding-top: 10px;*/
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+/*.router-nav-main ul{
+  background-color: green;
+}*/
+.router-nav-main ul li:hover{
+  background-color: green;
+}
+.router-nav-main ul { list-style-type: none; }
+.router-nav-main ul li a { text-decoration: none; color: inherit; }

@@ -20,6 +20,14 @@ class LessonItem extends React.Component {
             );
             console.log("recordID = "+ recordID);
         };
+        this.handleDetails= (event) => {
+            console.log("EVENT !!! details this record");
+            const recordID = this.extractRecordID(
+                event.target.id ,
+                event.target.className
+            );
+            console.log("recordID = "+ recordID);
+        };
         this.extractRecordID = (id , classname) => {
             return id.substr(
                 classname.length + 16
@@ -57,6 +65,13 @@ class LessonItem extends React.Component {
                         action={"delete"}
                         recordID={lesson.id}
                         handleClick={this.handleDelete}
+                    >
+                        DELETE
+                    </Button>
+                    <Button
+                        action={"details"}
+                        recordID={lesson.id}
+                        handleClick={this.handleDetails}
                     >
                         DELETE
                     </Button>
