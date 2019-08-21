@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import * as PropTypes from "prop-types";
-import API from "../api/API"
-import {crud_read_all} from "../action/index";
-import {crud_read} from "../action/index";
+import API from "../../../redux/api/API"
+import {crud_read_all} from "../../../redux/action";
+import {crud_read} from "../../../redux/action";
 import './LessonCreate.css'
-import LessonCreateForm from "../component/LessonCreateForm"
-import LabeledInput from "../component/LabeledInput"
+import LessonCreateForm from "./components/LessonCreateForm"
 
 class ConnectedLessonCreate extends Component {
     constructor(props) {

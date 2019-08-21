@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import LessonList from "./redux/container/LessonList";
-import LessonCreate from "./redux/container/LessonCreate";
+import LessonList from "./modules/lesson/list/LessonList";
+import LessonCreate from "./modules/lesson/form/LessonCreate";
 function Index() {
     const myStyle = {
         // fontSize: 24,

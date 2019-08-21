@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux"
-import API from "../api/API";
+import API from "../../../../redux/api/API";
 class ConnectedFormSubmitButton extends React.Component {
     constructor(props) {
         super(props);

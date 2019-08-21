@@ -1,7 +1,7 @@
 import React from 'react';
-import {crud_read, crud_read_all} from "../action";
+import {crud_read, crud_read_all} from "../../../../redux/action";
 import {connect} from "react-redux"
-import {form_data_update} from "../action/index"
+import {form_data_update} from "../../../../redux/action"
 class ConnectedLabeledInput extends React.Component {
     constructor(props) {
         super(props);

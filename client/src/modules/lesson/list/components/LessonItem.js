@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button"
+import Button from "../../form/components/Button"
 
 class LessonItem extends React.Component {
     constructor(props) {

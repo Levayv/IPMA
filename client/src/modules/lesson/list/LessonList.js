@@ -1,14 +1,11 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import uuidv1 from "uuid";
+// import uuidv1 from "uuid";
 import * as PropTypes from "prop-types";
-import LessonTable from "../component/LessonTable"
-import API from "../api/API"
-import {crud_read_all} from "../action/index";
-import {crud_read} from "../action/index";
-
-//todo temp solution
-import LessonCreate from "./LessonCreate"
+import LessonTable from "./components/LessonTable"
+import API from "../../../redux/api/API"
+import {crud_read_all} from "../../../redux/action";
+import {crud_read} from "../../../redux/action";
 
 class ConnectedList extends Component {
     constructor(props) {
