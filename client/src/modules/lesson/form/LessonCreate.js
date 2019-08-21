@@ -11,7 +11,11 @@ class ConnectedLessonCreate extends Component {
     constructor(props) {
         super(props);
         console.debug("LessonCreate.constructor()");
+        // console.log("LessonCreate.constructor()");
+        // console.log(this.props);
+        // console.log(this.props.match.params);
         // this.job = this.job.bind(this);
+        //todo refactor 
         this.job1 = this.job1.bind(this);
         this.handleSubmitAndPreventDefault = this.handleSubmitAndPreventDefault.bind(this);
     }

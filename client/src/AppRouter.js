@@ -1,68 +1,87 @@
 import React, {Component} from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Redirect,
+} from "react-router-dom";
 import LessonList from "./modules/lesson/list/LessonList";
 import LessonCreate from "./modules/lesson/form/LessonCreate";
-function Index() {
-    const myStyle = {
-        // fontSize: 24,
-        // lineHeight: '1.3em',
-        // fontWeight: 'bold',
-    };
-    return <h2 style={myStyle}>Home sweet Home</h2>;
-}
 
 class AppRouter extends Component {
     render() {
         return (
             <Router>
                 <div>
+                    <button
+                        onClick={() => {
+                            console.log(Date.now());
+                        }}> KILLSWITCH
+                    </button>
                     <nav
                         className={"router-nav-main"}
                     >
                         <ul>
                             <li><Link to="/">
-                                <div>
-                                    <span>Main</span> <span>Dashboard</span>
-                                </div>
+                                Dashboard
                             </Link></li>
-                            <li><Link to="/lessons/">
-                                <div>
-                                    <span>Lesson</span> <span>List</span>
-                                </div>
+                            <li><Link to="/lesson/">
+                                List
                             </Link></li>
-                            <li><Link to="/lesson-details/">
-                                <div>
-                                    <span>Lesson</span> <span>Details</span>
-                                </div>
+                            <li><Link to="/lesson/form">
+                                Form
                             </Link></li>
-                            <li><Link to="/lesson-create/">
-                                <div>
-                                    <span>Lesson</span> <span>Create</span>
-                                </div>
+                            {/*<li onClick={() => {*/}
+                            {/*    alert("Please use edit button inside List of Lessons")*/}
+                            {/*}}>*/}
+                            {/*    Edit*/}
+                            {/*</li>*/}
+                            <li><Link to="/lesson/edit">
+                                    Edit
                             </Link></li>
-                            <li><Link to="/lesson-edit/">
-                                <div>
-                                    <span>Lesson</span> <span>Edit</span>
-                                </div>
-                            </Link></li>
-                            {/*<li><Link to="/lesson-delete/">*/}
-                            {/*    <div>*/}
-                            {/*        Lesson Delete*/}
-                            {/*    </div>*/}
-                            {/*</Link></li>*/}
                         </ul>
                     </nav>
 
-                    <Route path="/" exact component={Index}/>
-                    <Route path="/lessons/" component={LessonList}/>
-                    <Route path="/lesson-details/" component={LessonCreate}/>
-                    <Route path="/lesson-create/" component={LessonCreate}/>
-                    <Route path="/lesson-edit/" component={LessonCreate}/>
-                    {/*<Route path="/lesson-delete/" component={LessonCreate}/>*/}
+                    <Route path="/" exact component={Dashboard}/>
+                    <Route path="/lesson" component={Lesson}/>
+                    <Route path="/blog" component={Blog}/>
+
+                    {/*<Route path="/lesson/" component={LessonList}/>*/}
+                    {/*<Route path="/lesson/form/" component={LessonCreate}/>*/}
+                    {/*<Route path="/lesson/edit/:id" component={LessonCreate}/>*/}
                 </div>
             </Router>
         );
     }
+}
+
+function Dashboard() {
+    return <h2>Home sweet Home</h2>;
+}
+
+function Lesson({match}) {
+    return (<div>
+        <Route exact path={match.path} component={LessonList}/>
+        <Route path={`${match.path}/form/`} component={LessonCreate}/>
+        <Route path={`${match.path}/edit/`} render={
+            () =>{
+                alert("Please use edit button inside List of Lessons");
+                return (
+                    <Redirect
+                        to={{
+                            pathname: "/lesson",
+                        }}
+                    />
+                )
+            }
+        }/>
+        <Route path={`${match.path}/edit/:recordID`} component={LessonCreate}/>
+        
+    </div>)
+}
+
+function Blog({match}) {
+    return (<div style={{backgroundColor:"red"}}> Under construction </div>)
 }
 
 export default AppRouter;

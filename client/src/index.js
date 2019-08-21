@@ -4,8 +4,6 @@ import { Provider } from "react-redux";
 import store from "./redux/store/index";
 import AppRouter from "./AppRouter"; 
 import './index.css';
-import LessonList from "./modules/lesson/list/LessonList";
-import LessonCreate from "./modules/lesson/form/LessonCreate";
 
 
 ReactDOM.render(

@@ -5,28 +5,25 @@ class LessonItem extends React.Component {
     constructor(props) {
         super(props);
         this.handleEdit = (event) =>{
-            console.log("EVENT !!! EDIT this record");
             const recordID = this.extractRecordID(
                 event.target.id ,
                 event.target.className
             );
-            console.log("recordID = "+ recordID);
+            console.log("EVENT !!! EDIT pushed record with ID "+ recordID);
         };
         this.handleDelete = (event) =>{
-            console.log("EVENT !!! DELETE this record");
             const recordID = this.extractRecordID(
                 event.target.id ,
                 event.target.className
             );
-            console.log("recordID = "+ recordID);
+            console.log("EVENT !!! DELETE recordID = "+ recordID);
         };
         this.handleDetails= (event) => {
-            console.log("EVENT !!! details this record");
             const recordID = this.extractRecordID(
                 event.target.id ,
                 event.target.className
             );
-            console.log("recordID = "+ recordID);
+            console.log("EVENT !!! DETAILS recordID = "+ recordID);
         };
         this.extractRecordID = (id , classname) => {
             return id.substr(

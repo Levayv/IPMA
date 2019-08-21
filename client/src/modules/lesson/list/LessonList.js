@@ -11,6 +11,8 @@ class ConnectedList extends Component {
     constructor(props) {
         super(props);
         console.debug("List-container.constructor()");
+        console.log("List-container.constructor()");
+        console.log(this.props.match.params);
         // console.debug("creating object Number " + ConnectedList.count++);
         // this.api = new Api(process.env.REACT_APP_BACKEND_IP_PORT);
         this.job1forGet = (isSuccess , data) =>{
