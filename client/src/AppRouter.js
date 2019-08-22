@@ -1,17 +1,18 @@
 import React, {Component} from "react";
 import {
-    BrowserRouter as Router,
+    Router,
     Route,
     Link,
     Redirect,
 } from "react-router-dom";
+import history from "./history";
 import LessonList from "./modules/lesson/list/LessonList";
 import LessonCreate from "./modules/lesson/form/LessonCreate";
 
 class AppRouter extends Component {
     render() {
         return (
-            <Router>
+            <Router history={history}>
                 <div>
                     <button
                         onClick={() => {
@@ -62,8 +63,8 @@ function Dashboard() {
 function Lesson({match}) {
     return (<div>
         <Route exact path={match.path} component={LessonList}/>
-        <Route path={`${match.path}/form/`} component={LessonCreate}/>
-        <Route path={`${match.path}/edit/`} render={
+        <Route exact path={`${match.path}/form/`} component={LessonCreate}/>
+        <Route exact path={`${match.path}/edit/`} render={
             () =>{
                 alert("Please use edit button inside List of Lessons");
                 return (

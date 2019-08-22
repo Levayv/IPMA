@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../form/components/Button"
+import history from "../../../../history";
 
 class LessonItem extends React.Component {
     constructor(props) {
@@ -10,6 +11,8 @@ class LessonItem extends React.Component {
                 event.target.className
             );
             console.log("EVENT !!! EDIT pushed record with ID "+ recordID);
+            // Redirecting to Edit form
+            history.push("/lesson/edit/"+recordID)
         };
         this.handleDelete = (event) =>{
             const recordID = this.extractRecordID(
@@ -17,6 +20,8 @@ class LessonItem extends React.Component {
                 event.target.className
             );
             console.log("EVENT !!! DELETE recordID = "+ recordID);
+            // Redirecting to List
+            history.push("/lesson/");
         };
         this.handleDetails= (event) => {
             const recordID = this.extractRecordID(

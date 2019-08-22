@@ -6,6 +6,7 @@ import {CRUD_READ} from "../action-types";
 import {FORM_DATA_UPDATE} from "../action-types";
 import {FORM_DATA_UPDATE_NAME} from "../action-types";
 import {FORM_DATA_UPDATE_LINK} from "../action-types";
+import {DIABOLICAL_REDIRECT} from "../action-types";
 
 const initState = {
     something: "",
@@ -70,6 +71,17 @@ function root(state = initState, action) {
         }
         // console.log("Reducer test end");
     }
+    if (action.type === DIABOLICAL_REDIRECT) {
+        
+        // return Object.assign({}, state, {
+        //         formData:{
+        //             name: state.formData.name,
+        //             link: action.payload.link,
+        //         }
+        //     }
+        // )
+    } 
+    
     // if (action.type === FORM_DATA_UPDATE_NAME) {
     //     console.log("THIS IS BUG !!! link");
     //     return Object.assign({}, state, {

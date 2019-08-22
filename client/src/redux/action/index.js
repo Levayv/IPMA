@@ -27,7 +27,7 @@ import {FORM_DATA_UPDATE_NAME} from "../action-types/index"
 export function form_data_update_name(payload) {
     return {type: FORM_DATA_UPDATE_NAME, payload}
 }
-import {FORM_DATA_UPDATE_LINK} from "../action-types/index"
+import {DIABOLICAL_REDIRECT} from "../action-types/index"
 export function form_data_update_link(payload) {
-    return {type: FORM_DATA_UPDATE_LINK, payload}
+    return {type: DIABOLICAL_REDIRECT, payload}
 }
