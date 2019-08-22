@@ -10,6 +10,10 @@ import {DIABOLICAL_REDIRECT} from "../action-types";
 
 const initState = {
     something: "",
+    singleRecord:{
+        name: "",
+        link: "",
+    },
     list: [],
     bulkList: [],
     formData: {
@@ -34,9 +38,10 @@ function root(state = initState, action) {
         )
     }
     if (action.type === CRUD_READ) {
-        let data = action.payload.data;
+        let singleRecord = action.payload.singleRecord;
         return Object.assign({}, state, {
-                list: state.list.concat(action.payload.data)
+                singleRecord: action.payload.singleRecord
+                // list: state.list.concat(action.payload.data)
             }
         )
     }

@@ -32,7 +32,7 @@ class AppRouter extends Component {
                             <li id={"router-nav-dashboard"}><Link to="/">
                                 Dashboard
                             </Link></li>
-                            <li id={"router-nav-list"}><Link to="/lesson/">
+                            <li id={"router-nav-list"}><Link to="/lesson/list">
                                 List
                             </Link></li>
                             <li id={"router-nav-form"}><Link to="/lesson/form">
@@ -63,12 +63,16 @@ class AppRouter extends Component {
 }
 
 function Dashboard() {
-    return <h2>Home sweet Home</h2>;
+    return <h2 style={ { 
+        width:"80%", 
+        margin:"auto",
+        textAlign:"center" 
+    } }>Home sweet Home</h2>;
 }
 
 function Lesson({match}) {
     return (<div>
-        <Route exact path={match.path} component={LessonList}/>
+        <Route exact path={`${match.path}/list/`} component={LessonList}/>
         <Route exact path={`${match.path}/form/`} component={LessonCreate}/>
         <Route exact path={`${match.path}/edit/`} render={
             () =>{

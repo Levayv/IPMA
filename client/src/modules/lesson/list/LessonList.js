@@ -15,6 +15,7 @@ class ConnectedList extends Component {
         console.log(this.props.match.params);
         // console.debug("creating object Number " + ConnectedList.count++);
         // this.api = new Api(process.env.REACT_APP_BACKEND_IP_PORT);
+        //todo remove job1forGet 
         this.job1forGet = (isSuccess , data) =>{
             console.debug("List-container.job()");
             try{
@@ -29,8 +30,8 @@ class ConnectedList extends Component {
                     console.log("HOORAY! -- ");
                 }
             }catch (e) {
-            debugger
                 console.log(e);
+                debugger
             }
         };
         this.job2forAll = (isSuccess , data) => {

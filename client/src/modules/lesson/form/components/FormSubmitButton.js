@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux"
 import API from "../../../../redux/api/API";
+import history from "../../../../history";
+
 class ConnectedFormSubmitButton extends React.Component {
     constructor(props) {
         super(props);
@@ -11,32 +13,42 @@ class ConnectedFormSubmitButton extends React.Component {
         this.handleSubmit = (event) =>{
             console.debug("FormSubmitButton.handleSubmit()");
             event.preventDefault();
-            let formData;
-            formData = new FormData();
-            formData.append('name' , this.props.formData.name);
-            formData.append('link' , this.props.formData.link) ;
-
-            console.debug("FormData's name = " + formData.get("name"));
-            console.debug("FormData's link = " + formData.get("link"));
-            API.doAfterPost("lesson",undefined, formData, this.job)
+            // let formData;
+            // formData = new FormData();
+            // formData.append('name' , this.props.values.name);
+            // formData.append('link' , this.props.values.link) ;
+            // console.log("aslmkdbfaskjldbfasdhf");
+            // console.log("aslmkdbfaskjldbfasdhf " + formData.get("name"));
+            // console.log("aslmkdbfaskjldbfasdhf " + formData.get("link"));
+            let payload = {
+                name: this.props.values.name,
+                link: this.props.values.link,
+            };
+            if (this.props.recordID){
+                API.doAfterPut("lesson", this.props.recordID , payload, this.job);    
+            }else {
+                API.doAfterPost("lesson", payload, this.job)
+            }
+            
         };
         this.job = (isSuccess, data) => {
             console.debug("FormSubmitButton.job()");
             try{
                 if (isSuccess) {
                     console.log("Reqest & Response Success");
+                    history.push("/lesson/list/")
                 } else {
                     console.log("Reqest & Response Failed");
                 }
             }catch (e) {
-            debugger
                 console.log(e);
+                debugger
             }
         }
     }
 
     render() {
-        console.debug("FormSubmitButton.render() " + this.props.label + " = " + this.props.value);
+        console.debug("FormSubmitButton.render() ");
         return (
             <button
                 onClick={this.handleSubmit}>
@@ -48,7 +60,7 @@ class ConnectedFormSubmitButton extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData,
+        qwe: state.qwe,
     };
 };
 const FormSubmitButton = connect(mapStateToProps, null)

@@ -4,13 +4,17 @@ import axios from 'axios';
 class API_core {
     static lastReqID=0;
     static _doAfterSomething(method, topic, id = "", payload ,toDoAfterPromise) {
-        console.debug("!!! indise API CORE");
-        console.debug("method is " + method);
-        console.debug("topic is " + topic);
-        console.debug("id is " + id);
-        console.debug("api link is " + (topic + "/" + id));
-        console.debug("payload is ...");
-        console.debug(payload);
+        console.log("API CORE ------------------------------------------------------");
+        console.log("method is " + method);
+        console.log("topic is " + topic);
+        console.log("id is " + id);
+        console.log("api link is " + (topic + "/" + id));
+        // if (payload) {
+        //     console.log("payload is ...");
+        //     for (let prop of payload) {
+        //         console.log("props - " + prop);
+        //     }
+        // }
         
         let reqID = ++API_core.lastReqID;
         console.debug("API " + method + " request ... (ReqID=" + reqID+")");
@@ -31,6 +35,7 @@ class API_core {
                 console.debug(error.toString());
                 console.debug(error.message);
                 console.debug(error.stack);
+                console.debug(error);
                 toDoAfterPromise(false, undefined)
             })
             .finally(() => {
@@ -38,6 +43,13 @@ class API_core {
                 }
             )
     }
+    // static _doDebugWrapper(method, topic, id = "", payload ,toDoAfterPromise){
+    //     try{
+    //         API_core._doAfterSomething(method, topic, id = "", payload ,toDoAfterPromise);
+    //     }catch (e) {
+    //         console.log(e);
+    //     }
+    // }
 }
 
 class API {
@@ -63,8 +75,14 @@ class API {
             undefined,
             toDoAfterPromise22);
     }
-    static doAfterPost(topic, id, payload, toDoAfterPromise33) {
+    static doAfterPost(topic, payload, toDoAfterPromise33) {
         API_core._doAfterSomething("post", topic,
+            undefined,
+            payload,
+            toDoAfterPromise33);
+    }
+    static doAfterPut(topic, id, payload, toDoAfterPromise33) {
+        API_core._doAfterSomething("put", topic,
             id,
             payload,
             toDoAfterPromise33);
