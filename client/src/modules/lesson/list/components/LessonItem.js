@@ -20,9 +20,10 @@ class LessonItem extends React.Component {
                 event.target.className
             );
             console.log("EVENT !!! DELETE recordID = "+ recordID);
-            // Redirecting to List
-            history.push("/lesson/");
+            // Redirecting to Delete form
+            history.push("/lesson/delete/"+recordID)
         };
+        // todo remove unused handle...
         this.handleDetails= (event) => {
             const recordID = this.extractRecordID(
                 event.target.id ,

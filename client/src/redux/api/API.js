@@ -4,11 +4,11 @@ import axios from 'axios';
 class API_core {
     static lastReqID=0;
     static _doAfterSomething(method, topic, id = "", payload ,toDoAfterPromise) {
-        console.log("API CORE ------------------------------------------------------");
-        console.log("method is " + method);
-        console.log("topic is " + topic);
-        console.log("id is " + id);
-        console.log("api link is " + (topic + "/" + id));
+        console.debug("API CORE ------------------------------------------------------");
+        console.debug("method is " + method);
+        console.debug("topic is " + topic);
+        console.debug("id is " + id);
+        console.debug("api link is " + (topic + "/" + id));
         // if (payload) {
         //     console.log("payload is ...");
         //     for (let prop of payload) {
@@ -81,11 +81,17 @@ class API {
             payload,
             toDoAfterPromise33);
     }
-    static doAfterPut(topic, id, payload, toDoAfterPromise33) {
+    static doAfterPut(topic, id, payload, toDoAfterPromise44) {
         API_core._doAfterSomething("put", topic,
             id,
             payload,
-            toDoAfterPromise33);
+            toDoAfterPromise44);
+    }
+    static doAfterDelete(topic, id, toDoAfterPromise55) {
+        API_core._doAfterSomething("delete", topic,
+            id,
+            undefined,
+            toDoAfterPromise55);
     }
 }
 

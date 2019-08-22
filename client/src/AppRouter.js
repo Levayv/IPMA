@@ -8,6 +8,7 @@ import {
 import history from "./history";
 import LessonList from "./modules/lesson/list/LessonList";
 import LessonCreate from "./modules/lesson/form/LessonCreate";
+import LessonDelete from "./modules/lesson/archive/LessonDelete";
 
 class AppRouter extends Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class AppRouter extends Component {
                             {/*    Edit*/}
                             {/*</li>*/}
                             <li id={"router-nav-edit"}><Link to="/lesson/edit">
-                                    Edit
+                                Edit
                             </Link></li>
                         </ul>
                     </nav>
@@ -63,36 +64,30 @@ class AppRouter extends Component {
 }
 
 function Dashboard() {
-    return <h2 style={ { 
-        width:"80%", 
-        margin:"auto",
-        textAlign:"center" 
-    } }>Home sweet Home</h2>;
+    return <h2 style={{
+        width: "80%",
+        margin: "auto",
+        textAlign: "center"
+    }}>Home sweet Home</h2>;
 }
 
 function Lesson({match}) {
     return (<div>
         <Route exact path={`${match.path}/list/`} component={LessonList}/>
         <Route exact path={`${match.path}/form/`} component={LessonCreate}/>
-        <Route exact path={`${match.path}/edit/`} render={
-            () =>{
-                alert("Please use edit button inside List of Lessons");
-                return (
-                    <Redirect
-                        to={{
-                            pathname: "/lesson",
-                        }}
-                    />
-                )
-            }
-        }/>
+        <Route exact path={`${match.path}/edit/`}
+               render={() => {
+                   alert("Please use edit button inside List of Lessons");
+                   // history.push("/lesson/")
+                   return (<Redirect to={{pathname: "/lesson/list",}}/>)
+               }}/>
         <Route path={`${match.path}/edit/:recordID`} component={LessonCreate}/>
-        
+        <Route path={`${match.path}/delete/:recordID`} component={LessonDelete}/>
     </div>)
 }
 
 function Blog({match}) {
-    return (<div style={{backgroundColor:"red"}}> Under construction </div>)
+    return (<div style={{backgroundColor: "red"}}> Under construction </div>)
 }
 
 export default AppRouter;

@@ -5,7 +5,6 @@ import API from "../../../redux/api/API"
 // import {crud_read_all} from "../../../redux/action";
 import {crud_read} from "../../../redux/action";
 import './LessonCreate.css'
-import LessonCreateForm from "./components/LessonCreateForm"
 import LabeledInput from "./components/LabeledInput";
 import FormSubmitButton from "./components/FormSubmitButton";
 
@@ -33,8 +32,8 @@ class ConnectedLessonCreate extends Component {
         this.state = {
             buttonLabel: "Create Lesson",
             values: {
-                name: "QQQ",
-                link: "EEE",
+                name: "",
+                link: "",
             }
         };
         this.updateNameValue = (event) => {
@@ -154,6 +153,7 @@ class ConnectedLessonCreate extends Component {
             <div>
                 <form>
                     <fieldset>
+                        <div> Create new Lesson </div>
                         <LabeledInput
                             labelName={"name"}
                             displayName={"Lesson's Name"}
@@ -169,8 +169,8 @@ class ConnectedLessonCreate extends Component {
                         <FormSubmitButton
                             text={this.state.buttonLabel}
                             values={this.state.values}
-                            // method={this.state.isEditing}
                             recordID={this.props.match.params.recordID}
+                            action={"edit"}
                         />
                     </fieldset>
                 </form>
@@ -181,20 +181,14 @@ class ConnectedLessonCreate extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        // crud_read_all: all_lessons => dispatch(crud_read_all(all_lessons)),
         crud_read: singleRecord => dispatch(crud_read(singleRecord))
     };
 }
 
 const mapStateToProps = state => {
     return {
-        something: state.something,
-        list: state.list,
-        bulkList: state.bulkList,
-        formData: state.formData,
         singleRecord: state.singleRecord,
     };
 };
-ConnectedLessonCreate.propTypes = {something: PropTypes.any};
 const LessonCreate = connect(mapStateToProps, mapDispatchToProps)(ConnectedLessonCreate);
 export default LessonCreate;

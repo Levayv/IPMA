@@ -33,7 +33,9 @@ class LessonController extends Controller
 
     public function readall()
     {
-        $models = Lesson::query()->get();
+        $models = Lesson::query()
+            ->orderBy("updated_at" , "desc")
+            ->get();
         return $models;
     }
 

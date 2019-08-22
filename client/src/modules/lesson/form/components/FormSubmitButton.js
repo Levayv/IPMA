@@ -6,10 +6,10 @@ import history from "../../../../history";
 class ConnectedFormSubmitButton extends React.Component {
     constructor(props) {
         super(props);
-        this.updateData = (event) => {
-            console.log("FormSubmitButton.updateData()");
-            console.log(event.target.value);
-        };
+        // this.updateData = (event) => {
+        //     console.log("FormSubmitButton.updateData()");
+        //     console.log(event.target.value);
+        // };
         this.handleSubmit = (event) =>{
             console.debug("FormSubmitButton.handleSubmit()");
             event.preventDefault();
@@ -25,11 +25,16 @@ class ConnectedFormSubmitButton extends React.Component {
                 link: this.props.values.link,
             };
             if (this.props.recordID){
-                API.doAfterPut("lesson", this.props.recordID , payload, this.job);    
+                // console.log("!!! " + this.props.action);
+                if (this.props.action === "edit"){
+                    API.doAfterPut("lesson", this.props.recordID , payload, this.job);
+                }
+                if (this.props.action === "delete"){
+                    API.doAfterDelete("lesson", this.props.recordID , this.job);
+                }
             }else {
                 API.doAfterPost("lesson", payload, this.job)
             }
-            
         };
         this.job = (isSuccess, data) => {
             console.debug("FormSubmitButton.job()");
