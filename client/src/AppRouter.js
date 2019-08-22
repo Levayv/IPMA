@@ -8,7 +8,7 @@ import {
 import history from "./history";
 import LessonList from "./modules/lesson/list/LessonList";
 import LessonCreate from "./modules/lesson/form/LessonCreate";
-import LessonDelete from "./modules/lesson/archive/LessonDelete";
+import LessonDelete from "./modules/lesson/form/LessonDelete";
 
 class AppRouter extends Component {
     constructor(props) {

@@ -20,20 +20,24 @@ class ConnectedFormSubmitButton extends React.Component {
             // console.log("aslmkdbfaskjldbfasdhf");
             // console.log("aslmkdbfaskjldbfasdhf " + formData.get("name"));
             // console.log("aslmkdbfaskjldbfasdhf " + formData.get("link"));
-            let payload = {
-                name: this.props.values.name,
-                link: this.props.values.link,
-            };
             if (this.props.recordID){
                 // console.log("!!! " + this.props.action);
                 if (this.props.action === "edit"){
+                    let payload = {
+                        name: this.props.values.name,
+                        link: this.props.values.link,
+                    };
                     API.doAfterPut("lesson", this.props.recordID , payload, this.job);
                 }
                 if (this.props.action === "delete"){
                     API.doAfterDelete("lesson", this.props.recordID , this.job);
                 }
             }else {
-                API.doAfterPost("lesson", payload, this.job)
+                let payload = {
+                    name: this.props.values.name,
+                    link: this.props.values.link,
+                };
+                API.doAfterPost("lesson", payload, this.job);
             }
         };
         this.job = (isSuccess, data) => {

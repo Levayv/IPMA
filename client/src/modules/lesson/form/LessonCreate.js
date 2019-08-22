@@ -7,11 +7,11 @@ import {crud_read} from "../../../redux/action";
 import './LessonCreate.css'
 import LabeledInput from "./components/LabeledInput";
 import FormSubmitButton from "./components/FormSubmitButton";
+import history from "../../../history";
 
 class ConnectedLessonCreate extends Component {
     constructor(props) {
         super(props);
-
         // this.forwardEditingID = 
         //     (this.props.match.params.recordID === undefined)
         //         ?(0)
@@ -31,6 +31,7 @@ class ConnectedLessonCreate extends Component {
         //------------------------------------------
         this.state = {
             buttonLabel: "Create Lesson",
+            headerLabel: "Create new Lesson",
             values: {
                 name: "",
                 link: "",
@@ -85,10 +86,7 @@ class ConnectedLessonCreate extends Component {
             API.doAfterGet("lesson" , this.props.match.params.recordID, this.job1);
             this.setState({
                 buttonLabel: "Update Lesson",
-                values: {
-                    name: this.props.singleRecord.name,
-                    link: this.props.singleRecord.link,
-                }
+                headerLabel: "Update existing Lesson",
             })
         }
 
@@ -115,11 +113,22 @@ class ConnectedLessonCreate extends Component {
         try {
             if (isSuccess) {
                 console.log("HOORAY! ++ ");
+                // todo useless ? storing response data in redux store
                 this.props.crud_read(
                     {
                         something: ["something_nice", "something_nicer"],
                         singleRecord: data
-                    })
+                    });
+                this.setState({
+                    values: {
+                        name: this.props.singleRecord.name,
+                        link: this.props.singleRecord.link,
+                    }
+                });
+                if (this.props.singleRecord.status === "fail"){
+                    history.push("/lesson/list/")
+                }
+
             } else {
                 console.log("HOORAY! -- ");
             }
@@ -153,7 +162,19 @@ class ConnectedLessonCreate extends Component {
             <div>
                 <form>
                     <fieldset>
-                        <div> Create new Lesson </div>
+                        <div className={
+                            "popup-deletion"
+                        }> 
+                            invisible
+                            <FormSubmitButton
+                                text={"Please Comfirm deletion"}
+                                // values={this.state.values}
+                                recordID={this.props.match.params.recordID}
+                                action={"delete"}
+                            />
+                            
+                        </div>
+                        <div> {this.state.headerLabel} </div>
                         <LabeledInput
                             labelName={"name"}
                             displayName={"Lesson's Name"}

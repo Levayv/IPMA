@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import FormSubmitButton from "../form/components/FormSubmitButton";
+import FormSubmitButton from "./components/FormSubmitButton";
 
 class LessonDelete extends Component {
     constructor(props) {
@@ -15,7 +15,6 @@ class LessonDelete extends Component {
                 <div> Please Comfirm deletion </div>
                 <FormSubmitButton
                     text={this.state.buttonLabel}
-                    values={this.state.values}
                     recordID={this.props.match.params.recordID}
                     action={"delete"}
                 />

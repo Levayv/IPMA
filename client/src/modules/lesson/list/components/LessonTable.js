@@ -44,8 +44,8 @@ class LessonTable extends Component {
                     key={element.id} 
                     datum={element} 
                     index={index+1}
-                    editRecord={"EDIT"}
-                    deleteRecord={"EDIT"}
+                    // editRecord={"EDIT"}
+                    // deleteRecord={"EDIT"}
                 />);
             }
         );
