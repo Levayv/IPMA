@@ -10,7 +10,13 @@ import LessonList from "./modules/lesson/list/LessonList";
 import LessonCreate from "./modules/lesson/form/LessonCreate";
 
 class AppRouter extends Component {
+    constructor(props) {
+        super(props);
+        // this.myRef = 
+    }
+
     render() {
+        //todo refactor (id for getElementbyID) >> (ref)
         return (
             <Router history={history}>
                 <div>
@@ -23,13 +29,13 @@ class AppRouter extends Component {
                         className={"router-nav-main"}
                     >
                         <ul>
-                            <li><Link to="/">
+                            <li id={"router-nav-dashboard"}><Link to="/">
                                 Dashboard
                             </Link></li>
-                            <li><Link to="/lesson/">
+                            <li id={"router-nav-list"}><Link to="/lesson/">
                                 List
                             </Link></li>
-                            <li><Link to="/lesson/form">
+                            <li id={"router-nav-form"}><Link to="/lesson/form">
                                 Form
                             </Link></li>
                             {/*<li onClick={() => {*/}
@@ -37,7 +43,7 @@ class AppRouter extends Component {
                             {/*}}>*/}
                             {/*    Edit*/}
                             {/*</li>*/}
-                            <li><Link to="/lesson/edit">
+                            <li id={"router-nav-edit"}><Link to="/lesson/edit">
                                     Edit
                             </Link></li>
                         </ul>

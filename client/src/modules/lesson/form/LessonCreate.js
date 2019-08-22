@@ -10,18 +10,49 @@ import LessonCreateForm from "./components/LessonCreateForm"
 class ConnectedLessonCreate extends Component {
     constructor(props) {
         super(props);
+        this.forwardEditingID = this.props.match.params.recordID;
+        // this.forwardEditingID = 
+        //     (this.props.match.params.recordID === undefined)
+        //         ?(0)
+        //         :(this.props.match.params.recordID);
+            
         console.debug("LessonCreate.constructor()");
         // console.log("LessonCreate.constructor()");
         // console.log(this.props);
-        // console.log(this.props.match.params);
-        // this.job = this.job.bind(this);
+        // console.log("!!!!!!!!!!!!!!!!!!!");
+        // console.log(this.forwardEditingID);
         //todo refactor 
         this.job1 = this.job1.bind(this);
-        this.handleSubmitAndPreventDefault = this.handleSubmitAndPreventDefault.bind(this);
+        this.handleSubmitAndPreventDefault = 
+            this.handleSubmitAndPreventDefault.bind(this);
     }
 
     componentDidMount() {
         console.debug("LessonCreate.componentDidMount()");
+        if (this.forwardEditingID){
+            document.getElementById("router-nav-edit")
+                .style.color = "red";    
+        }else {
+            document.getElementById("router-nav-form")
+                .style.color = "red";
+        }
+        
+        
+
+        // try {
+        //     this.refs.routernavdashboard.style.backgroundColor = "black";
+        // }catch (e) {
+        //     console.log(e);
+        // }
+    }
+    componentWillUnmount() {
+        if (this.forwardEditingID){
+            document.getElementById("router-nav-edit")
+                .style.color = null;
+        }else {
+            document.getElementById("router-nav-form")
+                .style.color = null;
+        }
     }
 
     job1(isSuccess, data) {
@@ -62,6 +93,7 @@ class ConnectedLessonCreate extends Component {
         return (
             <LessonCreateForm 
                 parentHandleSubmit={this.handleSubmitAndPreventDefault}
+                editingID={this.forwardEditingID}
             />
         );
     }

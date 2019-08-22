@@ -58,8 +58,13 @@ class ConnectedList extends Component {
         // API.doAfterGet("lesson" ,2, this.job1);
         // API.doAfterGet("lesson" ,3, this.job1);
         API.doAfterGetAll("lesson" , this.job2forAll)
+        document.getElementById("router-nav-list")
+            .style.color = "red";
     }
-    
+    componentWillUnmount() {
+        document.getElementById("router-nav-list")
+            .style.color = null;
+    }    
 
     render() {
         console.debug("List-container.render()");
