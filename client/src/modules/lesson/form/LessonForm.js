@@ -27,10 +27,11 @@ class ConnectedLessonForm extends Component {
                             singleRecord: data
                         });
                     this.setState({
-                        values: {
-                            name: this.props.singleRecord.name,
-                            link: this.props.singleRecord.link,
-                        }
+                        // values: {
+                        //     name: this.props.singleRecord.name,
+                        //     link: this.props.singleRecord.link,
+                        // }
+                        values: {...this.props.singleRecord}
                     });
                     if (this.props.singleRecord.status === "fail") {
                         history.push("/lesson/list/")
