@@ -5,14 +5,13 @@ class LessonDelete extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            buttonLabel: "Comfirm",
+            buttonLabel: "Confirm",
         };
     }
     render() {
-        console.debug("LessonDelete.render()");
         return (
             <div><form><fieldset>
-                <div> Please Comfirm deletion </div>
+                <div> Please Confirm deletion </div>
                 <FormSubmitButton
                     text={this.state.buttonLabel}
                     recordID={this.props.match.params.recordID}

@@ -9,8 +9,6 @@ import './index.css';
 ReactDOM.render(
     <Provider store={store}>
         <AppRouter />
-        {/*<LessonList />*/}
-        {/*<LessonCreate/>*/}
     </Provider>,
     document.getElementById('root')
 );

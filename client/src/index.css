@@ -11,10 +11,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /*justify-content: center;*/
   justify-content: space-around;
-  /*align-items: stretch;*/
-  /*align-content: stretch;*/
   
   margin: 0;
   padding: 0;
@@ -25,17 +22,10 @@ body {
 .router-nav-main ul li{ /* flex-item */
   box-sizing: border-box;
   margin: 0;
-  /*padding-top: 10px;*/
-  /*padding-bottom: 10px;*/
-  /*padding-left: 10px;*/
-  /*padding-top: 10px;*/
   padding: 10px;
   text-align: center;
   width: 100%;
 }
-/*.router-nav-main ul{
-  background-color: green;
-}*/
 .router-nav-main ul li:hover{
   background-color: green;
 }

@@ -10,42 +10,17 @@ class LessonTable extends Component {
             id: " ",
             name: "Name",
             link: "Link / URL",
-            controlls: " Controlls",
+            controlls: " ",
         };
     }
 
     render() {
-        console.debug("!!! LessonTable.render()");
-        console.debug("! len = " + this.props.dataList.length);
-        console.debug(this.props.dataList);
-        // let data1 = Array.from(this.props.data);
-        // console.log(this.props.data);
-        // console.log("len="+this.props.data);
-        // console.log(data1);
-        // console.log("len="+data1.length);
-        // console.log(data1.pop());
-
-        let lessons = [
-            {
-                id: "1",
-                title: "lesson 1"
-            },
-            {
-                id: "2",
-                title: "lesson 2"
-            }
-        ];
-
         const tableBody = this.props.dataList.map(
             (element, index) => {
-                // console.log("!!! element test");
-                // console.log(element);
                 return (<LessonItem 
                     key={element.id} 
-                    datum={element} 
+                    singleLesson={element} 
                     index={index+1}
-                    // editRecord={"EDIT"}
-                    // deleteRecord={"EDIT"}
                 />);
             }
         );
@@ -66,12 +41,4 @@ class LessonTable extends Component {
         )
     }
 }
-
-// (<ul className="list-group list-group-flush">
-//     {this.props.dataList.map(el => (
-//         <li className="list-group-item" key={el.id}>
-//             {el.name+"X"}
-//         </li>
-//     ))}
-// </ul>)
 export default LessonTable;

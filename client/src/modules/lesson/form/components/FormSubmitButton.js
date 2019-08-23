@@ -6,58 +6,38 @@ import history from "../../../../history";
 class ConnectedFormSubmitButton extends React.Component {
     constructor(props) {
         super(props);
-        // this.updateData = (event) => {
-        //     console.log("FormSubmitButton.updateData()");
-        //     console.log(event.target.value);
-        // };
+        this.getPayload = () => {
+            return {
+                name: this.props.values.name,
+                link: this.props.values.link,
+            }
+        };
         this.handleSubmit = (event) =>{
-            console.debug("FormSubmitButton.handleSubmit()");
             event.preventDefault();
-            // let formData;
-            // formData = new FormData();
-            // formData.append('name' , this.props.values.name);
-            // formData.append('link' , this.props.values.link) ;
-            // console.log("aslmkdbfaskjldbfasdhf");
-            // console.log("aslmkdbfaskjldbfasdhf " + formData.get("name"));
-            // console.log("aslmkdbfaskjldbfasdhf " + formData.get("link"));
             if (this.props.recordID){
-                // console.log("!!! " + this.props.action);
                 if (this.props.action === "edit"){
-                    let payload = {
-                        name: this.props.values.name,
-                        link: this.props.values.link,
-                    };
-                    API.doAfterPut("lesson", this.props.recordID , payload, this.job);
+                    API.doAfterPut("lesson", this.props.recordID , this.getPayload(), this.job);
                 }
                 if (this.props.action === "delete"){
                     API.doAfterDelete("lesson", this.props.recordID , this.job);
                 }
             }else {
-                let payload = {
-                    name: this.props.values.name,
-                    link: this.props.values.link,
-                };
-                API.doAfterPost("lesson", payload, this.job);
+                API.doAfterPost("lesson", this.getPayload(), this.job);
             }
         };
+        // job is executed inside promise by axios.post|put|delete
         this.job = (isSuccess, data) => {
-            console.debug("FormSubmitButton.job()");
             try{
                 if (isSuccess) {
-                    console.log("Reqest & Response Success");
                     history.push("/lesson/list/")
-                } else {
-                    console.log("Reqest & Response Failed");
-                }
+                } 
             }catch (e) {
-                console.log(e);
                 debugger
             }
         }
     }
 
     render() {
-        console.debug("FormSubmitButton.render() ");
         return (
             <button
                 onClick={this.handleSubmit}>
@@ -66,12 +46,16 @@ class ConnectedFormSubmitButton extends React.Component {
         );
     }
 }
-
+// useless
 const mapStateToProps = state => {
     return {
-        qwe: state.qwe,
+        // list: state.list,
     };
 };
-const FormSubmitButton = connect(mapStateToProps, null)
-(ConnectedFormSubmitButton);
+function mapDispatchToProps(dispatch) {
+    return {
+        // crud_read: singleRecord => dispatch(crud_read(singleRecord))
+    };
+}
+const FormSubmitButton = connect(mapStateToProps, mapDispatchToProps)(ConnectedFormSubmitButton);
 export default FormSubmitButton;

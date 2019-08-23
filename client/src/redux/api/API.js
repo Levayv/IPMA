@@ -1,23 +1,23 @@
-import react from "react";
 import axios from 'axios';
 
 class API_core {
-    static lastReqID=0;
+    // todo refactor commented logging functionality
+    // static lastReqID=0;
     static _doAfterSomething(method, topic, id = "", payload ,toDoAfterPromise) {
-        console.debug("API CORE ------------------------------------------------------");
-        console.debug("method is " + method);
-        console.debug("topic is " + topic);
-        console.debug("id is " + id);
-        console.debug("api link is " + (topic + "/" + id));
+        // console.log("API CORE ------------------------------------------------------");
+        // console.log("method is " + method);
+        // console.log("topic is " + topic);
+        // console.log("id is " + id);
+        // console.log("api link is " + (topic + "/" + id));
         // if (payload) {
         //     console.log("payload is ...");
-        //     for (let prop of payload) {
-        //         console.log("props - " + prop);
+        //     for (let prop in payload) {
+        //         console.log("property - " + prop);
         //     }
         // }
         
-        let reqID = ++API_core.lastReqID;
-        console.debug("API " + method + " request ... (ReqID=" + reqID+")");
+        // let reqID = ++API_core.lastReqID;
+        // console.debug("API " + method + " request ... (ReqID=" + reqID+")");
         const axiosInstance = axios.create({
             baseURL: "http://"
                 + process.env.REACT_APP_BACKEND_IP_PORT
@@ -26,67 +26,49 @@ class API_core {
         // axiosInstance.post();
         axiosInstance[method](topic + "/" + id , payload)
             .then(response => {
-                    console.debug("API._doAfterSomething() Promise fulfilled");
                     toDoAfterPromise(true, response.data);
                 }
             )
             .catch(error => {
-                console.debug("API._doAfterSomething() Promise rejected");
-                console.debug(error.toString());
-                console.debug(error.message);
-                console.debug(error.stack);
-                console.debug(error);
                 toDoAfterPromise(false, undefined)
             })
             .finally(() => {
-                    console.debug("API (ReqID="+reqID+") completed");
+                    // console.debug("API (ReqID="+reqID+") completed");
                 }
             )
     }
-    // static _doDebugWrapper(method, topic, id = "", payload ,toDoAfterPromise){
-    //     try{
-    //         API_core._doAfterSomething(method, topic, id = "", payload ,toDoAfterPromise);
-    //     }catch (e) {
-    //         console.log(e);
-    //     }
-    // }
 }
 
 class API {
-    // todo ? still useless 
-    static showConnectionStatus(isConnectionSuccess) {
-        // only output to console yet 
-        if (isConnectionSuccess) {
-            console.log("Backend online");
-        } else {
-            console.log("Backend offline");
-        }
-    }
-    
+    // GET --- all records
     static doAfterGetAll(topic, toDoAfterPromise11) {
         API_core._doAfterSomething("get", topic,
             undefined,
             undefined,
             toDoAfterPromise11);
     }
+    // GET --- single record 
     static doAfterGet(topic, id, toDoAfterPromise22) {
         API_core._doAfterSomething("get", topic,
             id,
             undefined,
             toDoAfterPromise22);
     }
+    // POST
     static doAfterPost(topic, payload, toDoAfterPromise33) {
         API_core._doAfterSomething("post", topic,
             undefined,
             payload,
             toDoAfterPromise33);
     }
+    // PUT
     static doAfterPut(topic, id, payload, toDoAfterPromise44) {
         API_core._doAfterSomething("put", topic,
             id,
             payload,
             toDoAfterPromise44);
     }
+    // DELETE
     static doAfterDelete(topic, id, toDoAfterPromise55) {
         API_core._doAfterSomething("delete", topic,
             id,

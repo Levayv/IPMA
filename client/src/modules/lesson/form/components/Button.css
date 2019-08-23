@@ -2,10 +2,8 @@ button {
     box-sizing: content-box;
     padding: 0 8px;
     margin: 0;
-    /*height: 8px;*/
     font-size: 0.8em;
     border-radius: 25px;
-    /*background-image: linear-gradient(red, yellow);;*/
 }
 
 .button-edit {

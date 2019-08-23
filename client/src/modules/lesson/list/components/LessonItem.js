@@ -10,7 +10,6 @@ class LessonItem extends React.Component {
                 event.target.id ,
                 event.target.className
             );
-            console.log("EVENT !!! EDIT pushed record with ID "+ recordID);
             // Redirecting to Edit form
             history.push("/lesson/edit/"+recordID)
         };
@@ -19,17 +18,8 @@ class LessonItem extends React.Component {
                 event.target.id ,
                 event.target.className
             );
-            console.log("EVENT !!! DELETE recordID = "+ recordID);
             // Redirecting to Delete form
             history.push("/lesson/delete/"+recordID)
-        };
-        // todo remove unused handle...
-        this.handleDetails= (event) => {
-            const recordID = this.extractRecordID(
-                event.target.id ,
-                event.target.className
-            );
-            console.log("EVENT !!! DETAILS recordID = "+ recordID);
         };
         this.extractRecordID = (id , classname) => {
             return id.substr(
@@ -39,21 +29,16 @@ class LessonItem extends React.Component {
     }
 
     render() {
-        console.debug("LessonItem.render()");
-        const lesson = this.props.datum;
-        console.debug("Single Lesson  ... ... ... ... ...");
-        console.debug(lesson.id);
-        console.debug(lesson.name);
-        console.debug(lesson.link);
+        const lesson = this.props.singleLesson;
         return (
             <tr>
-                <td className="class1" >
+                <td className="datum" >
                     {this.props.index}
                 </td>
-                <td className="class1" >
+                <td className="datum" >
                     {lesson.name}
                 </td>
-                <td className="class1" >
+                <td className="datum" >
                     {lesson.link}
                 </td>
                 <td>
@@ -61,23 +46,12 @@ class LessonItem extends React.Component {
                         action={"edit"}
                         recordID={lesson.id} 
                         handleClick={this.handleEdit}
-                    >
-                        EDIT
-                    </Button>
+                    />
                     <Button
                         action={"delete"}
                         recordID={lesson.id}
                         handleClick={this.handleDelete}
-                    >
-                        DELETE
-                    </Button>
-                    <Button
-                        action={"details"}
-                        recordID={lesson.id}
-                        handleClick={this.handleDetails}
-                    >
-                        DELETE
-                    </Button>
+                    />
                 </td>
             </tr>
         )
