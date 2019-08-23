@@ -1,11 +1,16 @@
 button {
     box-sizing: content-box;
-    padding: 0 8px;
     margin: 0;
+    padding: 0 8px;
     font-size: 0.8em;
     border-radius: 25px;
 }
-
+.button-form {
+    margin: 20px 0px;
+    padding: 6px 12px;
+    font-size: 1.2em;
+    border-radius: 15px;
+}
 .button-edit {
     /*background-color: orange;*/
     background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%)

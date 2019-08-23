@@ -39,7 +39,8 @@ class ConnectedFormSubmitButton extends React.Component {
 
     render() {
         return (
-            <button
+            <button 
+                className={"button-form"}
                 onClick={this.handleSubmit}>
                 {this.props.text}
             </button>

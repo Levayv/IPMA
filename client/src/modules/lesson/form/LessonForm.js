@@ -1,4 +1,3 @@
-import './LessonCreate.css'
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import API from "../../../redux/api/API"
@@ -6,8 +5,9 @@ import {crud_read} from "../../../redux/action";
 import LabeledInput from "./components/LabeledInput";
 import FormSubmitButton from "./components/FormSubmitButton";
 import history from "../../../history";
+import "./LessonForm.css"
 
-class ConnectedLessonCreate extends Component {
+class ConnectedLessonForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -100,10 +100,12 @@ class ConnectedLessonCreate extends Component {
 
     render() {
         return (
-            <div>
+            <div className={"container-form"}>
                 <form>
                     <fieldset>
-                        <div> {this.state.headerLabel} </div>
+                        <div
+                            className={"form-header"}
+                        > {this.state.headerLabel} </div>
                         <LabeledInput
                             labelName={"name"}
                             displayName={"Lesson's Name"}
@@ -140,5 +142,5 @@ const mapStateToProps = state => {
         singleRecord: state.singleRecord,
     };
 };
-const LessonCreate = connect(mapStateToProps, mapDispatchToProps)(ConnectedLessonCreate);
-export default LessonCreate;
+const LessonForm = connect(mapStateToProps, mapDispatchToProps)(ConnectedLessonForm);
+export default LessonForm;

@@ -1,16 +1,22 @@
 import React from 'react';
+import "./LabeledInput.css"
 
 class LabeledInput extends React.Component {
     render() {
         return (
-            <label> {this.props.displayName}:
+            <div className={"form-labeled-input"}>
+                <label> 
+                    {this.props.displayName}:
+                </label>
                 <input
                     value={this.props.value}
                     onChange={this.props.onUpdate}
                 />
                 <br/>
-            </label>
+            </div>
+
         );
     }
 }
+
 export default LabeledInput;
